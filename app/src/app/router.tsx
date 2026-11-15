@@ -23,6 +23,15 @@ function RequireMe({ children }: { children: ReactNode }) {
   return meId ? children : <Navigate to="/tribe/avatar" replace />;
 }
 
+/**
+ * Every fresh load (opening the link, refreshing) starts on the home screen, never mid-flow.
+ * Moving around inside the app still works as normal; saved trip progress stays in My Tribe.
+ */
+const HOME_PATHS = ["/", "/desktop"];
+if (typeof window !== "undefined" && !HOME_PATHS.includes(window.location.pathname)) {
+  window.history.replaceState(null, "", "/");
+}
+
 export const router = createBrowserRouter([
   { path: "/", element: <MobileHome /> },
   { path: "/desktop", element: <LandingPage /> },

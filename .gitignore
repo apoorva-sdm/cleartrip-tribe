@@ -29,3 +29,7 @@ Thumbs.db
 .idea/
 .vscode/
 *.log
+
+# Assignment working notes: kept local, not published
+AI_LOG.md
+INTERVIEW_GUIDE.md

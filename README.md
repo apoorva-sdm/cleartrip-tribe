@@ -42,8 +42,6 @@ app/                React + TypeScript prototype (the live link)
   src/ui/           Shared components, avatar and item art
 prototype/          Early static recreation of the Cleartrip landing page
 .claude/skills/     The design and engineering rules the build followed
-AI_LOG.md           How AI was used during the assignment, and the decisions made
-INTERVIEW_GUIDE.md  Discussion guide used for user interviews
 ```
 
 ## Built with

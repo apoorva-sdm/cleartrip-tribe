@@ -1,0 +1,14 @@
+.avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  border-radius: 50%;
+  background: var(--avatar-bg);
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.faded {
+  opacity: 0.45;
+}

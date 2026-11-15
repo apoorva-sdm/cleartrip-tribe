@@ -1,0 +1,53 @@
+.figure {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.items {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+}
+
+.itemsTight {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+}
+
+.itemsTight > li + li {
+  margin-left: -5px;
+}
+
+.badge {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  background: var(--surface);
+}
+
+.lock {
+  position: absolute;
+  right: -4px;
+  bottom: -4px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--ink);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* The must-have pick: ink ring (a padlock too, when there's room). */
+.lockedBadge {
+  border: 1.5px solid var(--ink);
+  z-index: 1;
+}

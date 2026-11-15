@@ -1,0 +1,130 @@
+.group {
+  margin-bottom: var(--space-6);
+}
+
+.h2 {
+  margin-bottom: var(--space-3);
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 20px;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.reason {
+  margin-bottom: var(--space-2);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 16px;
+  color: var(--ink-3);
+  text-align: center;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.row .h2 {
+  margin-bottom: 0;
+}
+
+.big {
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 28px;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Orange fill up to the thumb, light grey after it. No outline. */
+.slider {
+  width: 100%;
+  height: 20px;
+  margin: var(--space-3) 0 var(--space-1);
+  background: transparent;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.slider::-webkit-slider-runnable-track {
+  height: 6px;
+  border: 0;
+  border-radius: 3px;
+  background: linear-gradient(to right, var(--orange) var(--fill), #ececec var(--fill));
+}
+
+.slider::-moz-range-track {
+  height: 6px;
+  border: 0;
+  border-radius: 3px;
+  background: #ececec;
+}
+
+.slider::-moz-range-progress {
+  height: 6px;
+  border-radius: 3px;
+  background: var(--orange);
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 22px;
+  height: 22px;
+  margin-top: -8px;
+  border: 0;
+  border-radius: 50%;
+  background: var(--orange);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.slider::-moz-range-thumb {
+  width: 22px;
+  height: 22px;
+  border: 0;
+  border-radius: 50%;
+  background: var(--orange);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.slider:focus-visible {
+  outline: 2px solid var(--link);
+  outline-offset: 4px;
+}
+
+.hint {
+  margin-top: var(--space-2);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 16px;
+  color: var(--ink-3);
+}
+
+.days {
+  margin-top: var(--space-2);
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-2);
+}
+
+.day,
+.dayOut {
+  height: 40px;
+  border: 1px solid var(--line-2);
+  border-radius: var(--r-btn);
+  background: var(--surface);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.dayOut {
+  border-color: var(--line);
+  background: #f3f3f3;
+  color: var(--ink-3);
+  text-decoration: line-through;
+}

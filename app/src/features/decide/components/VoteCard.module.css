@@ -1,0 +1,148 @@
+.card {
+  padding: var(--space-4);
+  border: 1px solid var(--line);
+  border-radius: var(--r-card);
+  box-shadow: var(--sh-card);
+  transition: opacity 0.3s ease;
+}
+
+.vetoed {
+  opacity: 0.55;
+}
+
+.head {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+
+.name {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 20px;
+}
+
+.region {
+  font-size: 12px;
+  line-height: 16px;
+  color: var(--ink-3);
+}
+
+.price {
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+}
+
+.price b {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 20px;
+  font-variant-numeric: tabular-nums;
+}
+
+.price span {
+  font-size: 10px;
+  line-height: 14px;
+  color: var(--ink-3);
+}
+
+.notes {
+  margin-top: var(--space-3);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-2);
+}
+
+.note {
+  padding: var(--space-2);
+  border-radius: var(--r-btn);
+  background: var(--tint);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 16px;
+}
+
+.note b {
+  display: block;
+  margin-bottom: 2px;
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: none;
+}
+
+.good {
+  color: var(--green);
+}
+
+.warn {
+  color: var(--orange);
+}
+
+.controls {
+  margin-top: var(--space-3);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.loves {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.step {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  font-size: 18px;
+  line-height: 1;
+}
+
+.step:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.hearts {
+  display: flex;
+  gap: 2px;
+}
+
+.on {
+  fill: #ee5fc9;
+  transition: transform 0.2s ease;
+}
+
+.off {
+  fill: var(--line);
+}
+
+.veto,
+.vetoOn {
+  height: 32px;
+  padding: 0 var(--space-3);
+  border-radius: 16px;
+  border: 1.5px solid var(--line);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.vetoOn {
+  border-color: var(--ink);
+  background: #f3f3f3;
+}
+
+.over {
+  margin-top: var(--space-2);
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: var(--r-sm);
+  background: #fff4ec;
+  color: #b4471c;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 16px;
+}

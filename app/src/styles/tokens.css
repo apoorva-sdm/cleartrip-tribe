@@ -1,0 +1,46 @@
+/* Cleartrip visual tokens, measured from cleartrip.com. See .claude/skills/visual-design. */
+:root {
+  --ink: #1a1a1a;
+  --ink-2: #666666;
+  --ink-3: #808080;
+  --muted: #999999;
+  --line: #e6e6e6;
+  --line-2: #e0e0e0;
+  --surface: #ffffff;
+  --tint: #f7faff;
+  --pill: #ecf3ff;
+  --avatar-bg: #dce5fc;
+  --skeleton: #eef1f6;
+
+  --orange: #ff4f17;
+  --green: #11a670;
+  --link: #3366cc;
+  --red: #e8212b;
+
+  --tribe-grad: linear-gradient(90deg, #ee5fc9 0%, #f7a1b8 55%, #fbbf9a 100%);
+  --tribe-grad-strong: linear-gradient(90deg, #e0309f, #ff5a36);
+  --elite-grad: linear-gradient(90deg, #ff3d6e, #ff7a45);
+
+  --font: "Inter", system-ui, sans-serif;
+
+  --r-xs: 3px;
+  --r-sm: 4px;
+  --r-md: 6px;
+  --r-btn: 8px;
+  --r-card: 12px;
+  --r-pill: 40px;
+
+  --sh-card: 0 8px 16px rgba(0, 0, 0, 0.04);
+  --sh-float: 0 6px 20px 2px rgba(0, 0, 0, 0.12);
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+
+  --phone-w: 390px;
+}

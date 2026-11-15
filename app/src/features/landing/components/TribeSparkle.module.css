@@ -1,0 +1,45 @@
+/* A tapered streak (wide faint glow + thin core per segment) races the pill outline
+   anticlockwise from the top-right, with a 4-point star at its head. Path and sizes
+   come from the tab's real size at runtime (useTribeSparkle). */
+.streak {
+  position: absolute;
+  left: -1.5px;
+  top: -1.5px;
+  overflow: visible;
+  pointer-events: none;
+}
+
+.streak path {
+  fill: none;
+  stroke-linecap: round;
+}
+
+.spark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 8.4px;
+  height: 8.4px;
+  pointer-events: none;
+  offset-anchor: center;
+  offset-rotate: 0deg;
+  offset-distance: 0%;
+  opacity: 0;
+}
+
+.spark svg {
+  width: 8.4px;
+  height: 8.4px;
+  display: block;
+  filter: drop-shadow(0 0 3px rgba(255, 110, 120, 0.7));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .streak {
+    display: none;
+  }
+
+  .spark {
+    opacity: 1;
+  }
+}

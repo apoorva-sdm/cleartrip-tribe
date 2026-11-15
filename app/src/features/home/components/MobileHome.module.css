@@ -1,0 +1,20 @@
+/* The page is a white sheet whose rounded bottom shows the dark nav colour behind it at the end. */
+.scroll {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  background: var(--ink);
+}
+
+.sheet {
+  min-height: 100%;
+  padding-bottom: var(--space-6);
+  background: var(--surface);
+  border-radius: 0 0 24px 24px;
+  overflow: hidden;
+}
+
+/* Measured: 23px between the small tiles and the hero spacer. */
+.gap {
+  height: 23px;
+}

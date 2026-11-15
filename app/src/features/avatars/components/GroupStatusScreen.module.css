@@ -1,0 +1,29 @@
+.progress {
+  margin-bottom: var(--space-2);
+}
+
+.count {
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 16px;
+  color: var(--ink-2);
+  font-variant-numeric: tabular-nums;
+}
+
+.bar {
+  margin-top: var(--space-2);
+  display: flex;
+  gap: var(--space-1);
+}
+
+.bar i {
+  flex: 1;
+  height: 4px;
+  border-radius: 2px;
+  background: var(--line);
+  transition: background-color 0.4s ease;
+}
+
+.bar i.filled {
+  background: var(--green);
+}

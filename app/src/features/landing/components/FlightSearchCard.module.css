@@ -1,0 +1,259 @@
+.card {
+  margin-top: 14px;
+  border: 1px solid var(--line);
+  border-radius: var(--r-card);
+  box-shadow: var(--sh-card);
+  padding: 32px 40px 40px;
+}
+
+/* Trip type, travellers, track flights */
+.row1 {
+  height: 52px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.radio {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  margin-right: 20px;
+  cursor: pointer;
+}
+
+.radio i {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 1.5px solid var(--muted);
+  display: block;
+}
+
+.radio.on i {
+  border: 6px solid var(--ink);
+}
+
+.vsep {
+  width: 1px;
+  height: 28px;
+  background: var(--line);
+  margin: 0 22px 0 14px;
+}
+
+.pax {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.track {
+  margin-left: auto;
+  height: 32px;
+  width: 108px;
+  border-radius: 24px;
+  background: var(--pill);
+  border: 1px solid rgba(26, 26, 26, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+/* From / to */
+.ft {
+  position: relative;
+  height: 52px;
+  display: flex;
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+  margin-bottom: 24px;
+}
+
+.ft .f {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 0 16px;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.ft .f + .f {
+  border-left: 1px solid var(--line);
+  padding-left: 32px;
+}
+
+.swap {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--surface);
+}
+
+/* Dates */
+.dates {
+  height: 52px;
+  display: flex;
+  margin-bottom: 24px;
+}
+
+.dates .d {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px;
+  border: 1px solid var(--line);
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.dates .d:first-child {
+  border-radius: 6px 0 0 6px;
+}
+
+.dates .d:last-child {
+  border-radius: 0 6px 6px 0;
+  border-left: 0;
+  padding-left: 20px;
+}
+
+/* Special fares */
+.fares {
+  height: 50px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.biz {
+  width: 298px;
+  height: 50px;
+  border: 1px solid #eaeaea;
+  border-radius: var(--r-md);
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: linear-gradient(90deg, #fff 30%, #eaf1ff);
+}
+
+.cbx {
+  width: 20px;
+  height: 20px;
+  border: 1.5px solid var(--ink-3);
+  border-radius: var(--r-xs);
+  flex: none;
+}
+
+.biz p {
+  font-weight: 500;
+  line-height: 16px;
+}
+
+.g {
+  color: var(--green);
+  font-size: 10px;
+  font-weight: 500;
+  line-height: 16px;
+}
+
+.save {
+  margin-left: auto;
+  background: var(--orange);
+  color: #fff;
+  font-size: 10px;
+  font-weight: 600;
+  border-radius: var(--r-sm);
+  height: 20px;
+  width: 78px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  letter-spacing: 0.2px;
+}
+
+.fsep {
+  width: 1px;
+  height: 46px;
+  background: var(--line);
+  margin: 0 20px;
+}
+
+.chips {
+  display: flex;
+  gap: 8px;
+}
+
+.chip {
+  width: 140px;
+  height: 46px;
+  border: 1px solid var(--line-2);
+  border-radius: var(--r-md);
+  padding: 8px;
+  line-height: 16px;
+  font-weight: 500;
+}
+
+.chip .g {
+  line-height: 14px;
+}
+
+/* Non-stop toggle and search */
+.bottom {
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.tgl {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.tgl i {
+  width: 32px;
+  height: 18px;
+  border-radius: 9px;
+  background: #b3b3b3;
+  position: relative;
+  display: block;
+}
+
+.tgl i::after {
+  content: "";
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--surface);
+  top: 2px;
+  left: 2px;
+}
+
+.search {
+  width: 280px;
+  height: 56px;
+  background: var(--orange);
+  border-radius: var(--r-btn);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+}

@@ -1,0 +1,56 @@
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.option,
+.on {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-4);
+  border: 1px solid var(--line);
+  border-radius: var(--r-card);
+  background: var(--surface);
+  box-shadow: var(--sh-card);
+  text-align: left;
+}
+
+.on {
+  border: 1.5px solid var(--ink);
+  padding: calc(var(--space-4) - 0.5px);
+  background: var(--tint);
+}
+
+.emoji {
+  font-size: 24px;
+}
+
+.text {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.text b {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+}
+
+.text span {
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 16px;
+  color: var(--ink-2);
+}
+
+.go {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--link);
+}

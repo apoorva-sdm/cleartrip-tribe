@@ -1,0 +1,71 @@
+/* Measured: section 296px tall on a #e4edff → #f7faff gradient; title 16/600 at 16px from the top;
+   chips 32px tall, 16px radius, 1.5px border, 8px apart; cards 16px apart. */
+.section {
+  margin-top: var(--space-4);
+  padding: var(--space-4) 0;
+  background: linear-gradient(#e4edff 0%, var(--tint) 100%);
+}
+
+.title {
+  padding-left: var(--space-4);
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 22px;
+  color: var(--ink);
+}
+
+.chips {
+  margin-top: 22px;
+  display: flex;
+  gap: var(--space-2);
+  padding: 0 var(--space-4);
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.chips::-webkit-scrollbar,
+.cards::-webkit-scrollbar {
+  display: none;
+}
+
+.chip,
+.chipOn {
+  flex: none;
+  height: 32px;
+  padding: 0 var(--space-2);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  border-radius: 16px;
+  border: 1.5px solid var(--line);
+  background: var(--surface);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  color: var(--ink);
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.chipOn {
+  background: #f3f3f3;
+  border-color: var(--ink);
+}
+
+.cards {
+  margin-top: var(--space-4);
+  display: flex;
+  gap: var(--space-4);
+  padding: 0 var(--space-4);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-padding: 0 var(--space-4);
+  scrollbar-width: none;
+  min-height: 178px;
+}
+
+.empty {
+  align-self: center;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--ink-2);
+}

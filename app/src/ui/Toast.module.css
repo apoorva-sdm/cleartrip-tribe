@@ -1,0 +1,21 @@
+.region {
+  position: absolute;
+  left: var(--space-4);
+  right: var(--space-4);
+  bottom: 96px;
+  display: flex;
+  justify-content: center;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.toast {
+  padding: 10px var(--space-4);
+  border-radius: var(--r-btn);
+  background: var(--ink);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  box-shadow: var(--sh-float);
+}

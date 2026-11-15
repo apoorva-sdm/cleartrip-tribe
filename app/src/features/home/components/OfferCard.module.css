@@ -1,0 +1,57 @@
+/* Measured: 224×178 cards, 16px radius, white on the section gradient. */
+.card {
+  flex: none;
+  width: 224px;
+  height: 178px;
+  padding: var(--space-4);
+  border-radius: 16px;
+  background: var(--surface);
+  display: flex;
+  flex-direction: column;
+  scroll-snap-align: start;
+}
+
+.icon {
+  width: 40px;
+  height: 40px;
+  margin-bottom: var(--space-3);
+}
+
+.icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.title {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 22px;
+}
+
+.sub {
+  margin-top: 2px;
+  font-size: 12px;
+  line-height: 16px;
+  color: var(--ink-3);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.tc {
+  font-size: 10px;
+  line-height: 14px;
+}
+
+.code {
+  margin-top: auto;
+  align-self: flex-start;
+  padding: 4px 8px;
+  border-radius: var(--r-sm);
+  background: var(--green);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 16px;
+  letter-spacing: 0.8px;
+}

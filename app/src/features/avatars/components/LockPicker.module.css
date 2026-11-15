@@ -1,0 +1,44 @@
+.wrap {
+  margin-top: var(--space-6);
+}
+
+.h2 {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 20px;
+}
+
+.sub {
+  margin-top: var(--space-1);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 16px;
+  color: var(--ink-3);
+}
+
+.row {
+  margin-top: var(--space-3);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.chip {
+  height: 40px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0 var(--space-3);
+  border: 1px solid var(--line-2);
+  border-radius: var(--r-md);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ink-2);
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.on {
+  border: 1.5px solid var(--ink);
+  padding: 0 calc(var(--space-3) - 0.5px);
+  color: var(--ink);
+}

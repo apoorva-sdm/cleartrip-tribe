@@ -1,0 +1,130 @@
+.card {
+  display: flex;
+  gap: var(--space-3);
+  padding: var(--space-3);
+  border: 1px solid var(--line);
+  border-radius: var(--r-card);
+  background: var(--surface);
+  box-shadow: var(--sh-card);
+}
+
+.proposed {
+  border: 1.5px dashed var(--ink);
+}
+
+.time {
+  flex: none;
+  width: 52px;
+  display: flex;
+  flex-direction: column;
+}
+
+.time b {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+}
+
+.time span {
+  font-size: 10px;
+  line-height: 14px;
+  color: var(--ink-3);
+  text-transform: capitalize;
+}
+
+.body {
+  flex: 1;
+  min-width: 0;
+}
+
+.title {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+}
+
+.meta {
+  margin-top: 2px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  line-height: 16px;
+  color: var(--ink-2);
+}
+
+.price {
+  padding: 1px 6px;
+  border-radius: var(--r-sm);
+  background: var(--pill);
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.min {
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--ink-3);
+}
+
+.why {
+  margin-top: var(--space-2);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 16px;
+}
+
+.source {
+  display: block;
+  font-size: 10px;
+  line-height: 14px;
+  color: var(--ink-3);
+}
+
+.by {
+  margin-top: var(--space-2);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--ink-3);
+}
+
+.swap {
+  margin-top: var(--space-2);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--link);
+}
+
+.pending {
+  margin-top: var(--space-2);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ink-2);
+}
+
+.objected {
+  margin-top: var(--space-2);
+  padding: var(--space-2);
+  border-radius: var(--r-btn);
+  background: #fff4ef;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 16px;
+}
+
+.actions {
+  margin-top: var(--space-2);
+  display: flex;
+  gap: var(--space-4);
+}
+
+.actions button {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--link);
+}

@@ -1,0 +1,30 @@
+.main {
+  width: 1440px;
+  margin: 0 auto;
+  padding: 43px 100px 64px 144px;
+  display: flex;
+  gap: 32px;
+  align-items: flex-start;
+}
+
+.left {
+  width: 857px;
+}
+
+.right {
+  width: 307px;
+}
+
+.title {
+  font-size: 30px;
+  font-weight: 600;
+  line-height: 36px;
+  letter-spacing: -0.2px;
+}
+
+.sub {
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 22px;
+  margin: 8px 0 0 4px;
+}

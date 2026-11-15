@@ -1,0 +1,28 @@
+.tabs {
+  height: 80px;
+  background: var(--tint);
+  padding: 16px;
+  display: flex;
+  justify-content: center;
+  gap: 22px;
+}
+
+.tab {
+  height: 48px;
+  padding: 8px 16px 8px 8px;
+  border-radius: var(--r-pill);
+  border: 1px solid transparent;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  cursor: pointer;
+}
+
+.tab.on {
+  background: var(--surface);
+  border-color: var(--line);
+  font-weight: 600;
+}

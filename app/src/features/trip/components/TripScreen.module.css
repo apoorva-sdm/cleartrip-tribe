@@ -1,0 +1,339 @@
+.tabs,
+.days {
+  display: flex;
+  gap: var(--space-2);
+  margin-bottom: var(--space-4);
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.timeline {
+  list-style: none;
+  margin-bottom: var(--space-4);
+}
+
+.stop {
+  position: relative;
+  display: grid;
+  grid-template-columns: 48px 12px 1fr;
+  gap: var(--space-2);
+  align-items: start;
+  padding-bottom: var(--space-4);
+}
+
+.stop:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  left: 61px;
+  top: 14px;
+  bottom: 0;
+  border-left: 1.5px dotted var(--line-2);
+}
+
+.time {
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 20px;
+  color: var(--ink-2);
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  margin-top: 5px;
+  border-radius: 50%;
+  background: var(--ink);
+}
+
+.what {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+}
+
+.what em {
+  font-style: normal;
+  color: var(--ink-3);
+}
+
+.lock {
+  display: block;
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--green);
+}
+
+.change {
+  padding: var(--space-4);
+  border-radius: var(--r-card);
+  border: 1.5px dashed var(--ink);
+}
+
+.changeTag {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ink-2);
+}
+
+.changeH {
+  margin-top: var(--space-2);
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.changeLine {
+  margin-top: var(--space-2);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+}
+
+.changeActions {
+  margin-top: var(--space-4);
+  display: flex;
+  gap: var(--space-2);
+}
+
+.tall {
+  height: 48px;
+}
+
+.grow {
+  flex: 1;
+}
+
+.log {
+  margin-top: var(--space-3);
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--green);
+}
+
+.offline {
+  display: inline-block;
+  margin-bottom: var(--space-2);
+  padding: 2px 8px;
+  border-radius: var(--r-sm);
+  background: var(--pill);
+  font-size: 10px;
+  font-weight: 600;
+}
+
+.h3 {
+  margin: var(--space-4) 0 var(--space-2);
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.booked {
+  list-style: none;
+}
+
+.booked li {
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-2) 0;
+  border-bottom: 1px solid var(--line);
+  font-size: 14px;
+}
+
+.booked span {
+  font-size: 12px;
+  color: var(--ink-3);
+}
+
+.contact {
+  padding: var(--space-4);
+  border: 1px solid var(--line);
+  border-radius: var(--r-card);
+  box-shadow: var(--sh-card);
+}
+
+.contactName {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.contactRole {
+  font-size: 12px;
+  color: var(--ink-3);
+}
+
+.facts {
+  margin-top: var(--space-3);
+}
+
+.facts div {
+  display: flex;
+  justify-content: space-between;
+  padding: 6px 0;
+  font-size: 12px;
+}
+
+.facts dt {
+  color: var(--ink-3);
+}
+
+.facts dd {
+  font-weight: 600;
+}
+
+.contactNote {
+  margin-top: var(--space-2);
+  font-size: 10px;
+  line-height: 14px;
+  color: var(--ink-3);
+}
+
+.safety {
+  padding-left: var(--space-4);
+  font-size: 14px;
+  line-height: 22px;
+}
+
+.sample {
+  margin-top: var(--space-4);
+  font-size: 10px;
+  color: var(--ink-3);
+  text-align: center;
+}
+
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.option {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: var(--space-3);
+  border: 1px solid var(--line);
+  border-radius: var(--r-card);
+  text-align: left;
+  font-size: 14px;
+}
+
+.option span {
+  font-size: 12px;
+  color: var(--ink-3);
+}
+
+.free {
+  display: block;
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--ink-3);
+}
+
+.bookNow,
+.otgDone {
+  margin-top: 4px;
+  height: 28px;
+  padding: 0 var(--space-3);
+  border-radius: var(--r-btn);
+  background: var(--orange);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 600;
+  flex: none;
+}
+
+.bookNow:disabled {
+  opacity: 0.6;
+}
+
+.otgDone {
+  background: #e7f6f0;
+  color: var(--green);
+}
+
+.sub {
+  margin-bottom: var(--space-3);
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--ink-2);
+}
+
+.otg {
+  list-style: none;
+}
+
+.otgItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3) 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.otgItem b {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.otgItem span {
+  font-size: 12px;
+  color: var(--ink-3);
+}
+
+.reprice {
+  margin-top: var(--space-3);
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  font-variant-numeric: tabular-nums;
+}
+
+.reprice th {
+  text-align: left;
+  font-weight: 500;
+  color: var(--ink-2);
+  padding: 4px 0;
+}
+
+.reprice td {
+  text-align: right;
+  padding: 4px 0 4px 6px;
+  white-space: nowrap;
+}
+
+.reprice em {
+  display: block;
+  font-style: normal;
+  font-size: 11px;
+  color: var(--orange);
+}
+
+.contactLink {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--link);
+  text-decoration: none;
+}
+
+.contactSheet {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.contactCta {
+  margin-top: var(--space-2);
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--r-btn);
+  background: var(--orange);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+}

@@ -1,0 +1,193 @@
+.list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.line {
+  padding: var(--space-3);
+  border: 1px solid var(--line);
+  border-radius: var(--r-card);
+  box-shadow: var(--sh-card);
+}
+
+.top {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+
+.title {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+}
+
+.price {
+  font-size: 14px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.detail {
+  font-size: 12px;
+  line-height: 16px;
+  color: var(--ink-2);
+}
+
+.why {
+  margin-top: var(--space-2);
+  display: flex;
+  align-items: flex-start;
+  gap: 4px;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 16px;
+}
+
+.booking,
+.booked {
+  margin-top: var(--space-2);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.booking {
+  color: var(--ink-3);
+}
+
+.booked {
+  color: var(--green);
+}
+
+.totals {
+  margin-top: var(--space-6);
+  border-top: 1px solid var(--line);
+}
+
+.totals div {
+  display: flex;
+  justify-content: space-between;
+  padding: var(--space-3) 0;
+  border-bottom: 1px solid var(--line);
+  font-size: 14px;
+}
+
+.totals dt {
+  font-weight: 500;
+  color: var(--ink-2);
+}
+
+.totals dd {
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.under {
+  color: var(--green);
+}
+
+.over {
+  color: var(--red);
+}
+
+.hint {
+  margin-bottom: var(--space-2);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 16px;
+  color: var(--ink-3);
+  text-align: center;
+}
+
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.tall {
+  height: 48px;
+}
+
+.checking {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ink-2);
+}
+
+.alert {
+  margin-bottom: var(--space-3);
+  padding: var(--space-3);
+  border-radius: var(--r-card);
+  background: #fff4ec;
+}
+
+.alertText {
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 18px;
+}
+
+.agree {
+  margin-top: var(--space-3);
+}
+
+.ok {
+  margin-bottom: var(--space-3);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--green);
+}
+
+.skipped {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-3);
+  border: 1px dashed var(--line-2);
+  border-radius: var(--r-card);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--ink-3);
+}
+
+.skipped button {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--link);
+}
+
+.travellers {
+  margin-top: var(--space-3);
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-3);
+  border: 1px solid var(--line);
+  border-radius: var(--r-card);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.travellers em {
+  font-style: normal;
+  font-weight: 500;
+  color: var(--link);
+}
+
+.price s {
+  font-weight: 500;
+  color: var(--ink-3);
+}
+
+.hint {
+  margin-top: var(--space-3);
+  text-align: center;
+}

@@ -1,0 +1,65 @@
+.wrap {
+  margin-bottom: var(--space-4);
+  padding: var(--space-3);
+  border-radius: var(--r-card);
+  background: var(--tint);
+}
+
+.row {
+  list-style: none;
+  display: flex;
+  gap: var(--space-3);
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.person {
+  flex: none;
+  width: 48px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.ring,
+.ringZero {
+  padding: 2px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+}
+
+.ringZero {
+  border-color: var(--orange);
+}
+
+.name {
+  max-width: 48px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 10px;
+  font-weight: 500;
+}
+
+.hearts {
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--ink-2);
+}
+
+.nudge {
+  margin-top: var(--space-2);
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 16px;
+  color: var(--orange);
+}
+
+.latest {
+  margin-top: var(--space-2);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 16px;
+  color: var(--ink-2);
+}

@@ -1,0 +1,82 @@
+.heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 25px;
+  height: 24px;
+}
+
+.heading b {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.heading a {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--link);
+  text-decoration: none;
+}
+
+.offer {
+  margin-top: 16px;
+  height: 228px;
+  border: 1px solid var(--line);
+  border-radius: var(--r-btn);
+  padding: 24px 24px 0;
+  position: relative;
+}
+
+.offer h5 {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 20px;
+}
+
+.offer p {
+  font-size: 14px;
+  line-height: 20px;
+  margin-top: 20px;
+}
+
+.offer p + p {
+  margin-top: 12px;
+}
+
+.offer a {
+  display: inline-block;
+  margin-top: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--link);
+  text-decoration: none;
+}
+
+.dots {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 44px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.dots i {
+  width: 6px;
+  height: 6px;
+  border-radius: 3px;
+  background: #ccc;
+  display: block;
+}
+
+.dots i.on {
+  width: 12px;
+  background: var(--ink-3);
+}
+
+.arrow {
+  position: absolute;
+  right: 20px;
+  bottom: 38px;
+}

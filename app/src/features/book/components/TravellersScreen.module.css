@@ -1,0 +1,50 @@
+.form {
+  margin-bottom: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.list {
+  list-style: none;
+}
+
+.row {
+  min-height: 52px;
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  border-bottom: 1px solid var(--line);
+}
+
+.name {
+  flex: 1;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.added {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--green);
+}
+
+.missing {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ink-3);
+}
+
+.ask {
+  margin-top: var(--space-4);
+  height: 48px;
+}
+
+.hint {
+  margin-bottom: var(--space-2);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 16px;
+  color: var(--ink-3);
+  text-align: center;
+}

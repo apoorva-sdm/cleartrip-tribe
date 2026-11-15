@@ -1,0 +1,49 @@
+.bar {
+  height: 56px;
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 0 var(--space-4) 0 var(--space-2);
+  border-bottom: 1px solid var(--line);
+}
+
+.back {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.stage {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 20px;
+}
+
+.brand {
+  margin-left: auto;
+  height: 24px;
+  padding: 0 var(--space-2);
+  display: flex;
+  align-items: center;
+  border-radius: var(--r-pill);
+  border: 1.5px solid transparent;
+  background: linear-gradient(#fff, #fff) padding-box, var(--tribe-grad) border-box;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.body {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--space-6) var(--space-4) var(--space-8);
+}
+
+.footer {
+  flex: none;
+  padding: var(--space-3) var(--space-4) var(--space-4);
+  border-top: 1px solid var(--line);
+  background: var(--surface);
+}

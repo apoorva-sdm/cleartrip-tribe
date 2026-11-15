@@ -1,0 +1,32 @@
+/* Measured: 64px, #1a1a1a, 24px icons, 10/500 labels; active white, others #b3b3b3. */
+.nav {
+  flex: none;
+  height: 64px;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  background: var(--ink);
+}
+
+.item,
+.itemOn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #b3b3b3;
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.itemOn {
+  color: #fff;
+}
+
+.item span,
+.itemOn span {
+  padding-top: 3px;
+  font-size: 10px;
+  font-weight: 500;
+  line-height: 14px;
+  white-space: nowrap;
+}

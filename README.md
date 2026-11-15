@@ -3,7 +3,7 @@
 > **Design assignment for Razorpay.** Concept, research, design and code by **Apoorva B S, National Institute of Design (NID)**.
 > This is an independent student prototype. It is **not affiliated with, endorsed by, or built for release by Cleartrip.**
 
-**Live prototype:** _add your Vercel link here_ · best viewed on a phone, or in a narrow browser window
+**Live prototype:** [cleartrip-tribe.vercel.app](https://cleartrip-tribe.vercel.app) · best viewed on a phone, or in a narrow browser window
 
 ---
 

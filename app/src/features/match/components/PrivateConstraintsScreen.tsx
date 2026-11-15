@@ -32,6 +32,7 @@ export function PrivateConstraintsScreen() {
 
   const available = missSome ? days.filter((d) => !out.includes(d)) : days;
   const reason = available.length === 0 ? "Leave at least one day free" : null;
+  const allIn = out.length === 0;
   const toggleOut = (day: string) => setOut((list) => (list.includes(day) ? list.filter((d) => d !== day) : [...list, day]));
 
   const submit = () => {
@@ -83,12 +84,17 @@ export function PrivateConstraintsScreen() {
         </div>
         {missSome && (
           <>
-            <p className={styles.hint}>Tap the days you can't make</p>
+            <div className={styles.daysHead}>
+              <p className={styles.hint}>Tap off the days you can't make</p>
+              <button type="button" className={styles.selectAll} onClick={() => setOut(allIn ? [...days] : [])}>
+                {allIn ? "Clear all" : "Select all"}
+              </button>
+            </div>
             <div className={styles.days}>
               {days.map((day) => {
-                const isOut = out.includes(day);
+                const isIn = !out.includes(day);
                 return (
-                  <button key={day} type="button" aria-pressed={isOut} className={isOut ? styles.dayOut : styles.day} onClick={() => toggleOut(day)}>
+                  <button key={day} type="button" aria-pressed={isIn} className={isIn ? styles.dayIn : styles.day} onClick={() => toggleOut(day)}>
                     {formatDay(day)}
                   </button>
                 );

@@ -17,6 +17,9 @@
 }
 
 .on {
+  padding: 0 calc(var(--space-3) + 0.5px);
+  border-width: 1px;
   background: #f3f3f3;
   border-color: var(--ink);
+  box-shadow: var(--sh-sel);
 }

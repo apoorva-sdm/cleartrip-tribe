@@ -1,6 +1,7 @@
 import { useId } from "react";
 import type { AvatarLook, HairColour, HairStyle, ItemId, SkinTone } from "@/domain";
 import { ItemArt } from "./ItemArt";
+import { sheetFor } from "./avatarSheet";
 
 /**
  * Avatar in a soft 3D "clay" style (after the reference set).
@@ -36,7 +37,7 @@ export const SKIN_SWATCH = SKIN;
 export const HAIR_SWATCH = HAIR;
 
 /** Full length: a bigger, friendlier head, scaled around the neck. */
-const HEAD_SCALE = "translate(50 62) scale(1.22) translate(-50 -62)";
+const HEAD_SCALE = "translate(50 62) scale(1.3) translate(-50 -62)";
 
 /** Below this size, trip items are left off a bust; they'd be specks. */
 const ITEMS_MIN_SIZE = 44;
@@ -59,29 +60,39 @@ function shade(hex: string, amt: number): string {
 const BLOB = "M58 20 C80 22 96 40 93 63 C90 86 71 99 48 97 C24 95 7 80 9 57 C11 34 35 18 58 20 Z";
 
 const HAIR_BACK: Partial<Record<HairStyle, string>> = {
-  long: "M27 38 C25 62 26 80 32 90 L68 90 C74 80 75 62 73 38 Z",
-  bob: "M27 38 C26 52 27 62 32 65.5 L68 65.5 C73 62 74 52 73 38 Z",
-  curly: "M25 40 C20 56 26 68 34 67 L66 67 C74 68 80 56 75 40 Z",
+  long: "M24 40 C21 66 22 84 26 96 L74 96 C78 84 79 66 76 40 Z",
+  sidepart: "M25 40 C23 54 24 62 28 66 L72 66 C76 62 77 54 75 40 Z",
+  bob: "M25 40 C23.5 52 24.5 60 28 63.5 L72 63.5 C75.5 60 76.5 52 75 40 Z",
+  curly: "M22 42 C16 60 22 72 32 72 L68 72 C78 72 84 60 78 42 Z",
 };
 
-/** Hair on top of the head (head: centre 50,42 · 20 wide · 21 tall). */
+/** Hair on top of the head, after the character sheet (face: centre 50,42 · 41 wide · 44 tall). */
 const HAIR_FRONT: Record<Exclude<HairStyle, "turban" | "hijab" | "curly">, string> = {
-  short: "M29 44 C26 17 38 10.5 50 10.5 C62 10.5 74 17 71 44 C70 35.5 67 30.5 62 28.5 C57 31.5 43 31.5 38 28.5 C33 30.5 30 35.5 29 44 Z",
-  sidepart: "M29 45 C25 17 39 9.5 52 10.5 C65 11.5 75 19 71 43 C69 34 65 28.5 59 27 C51 31 40 29.5 34 34.5 C31.5 37.5 30 41 29 45 Z",
-  bun: "M29 44 C26.5 19 38 13 50 13 C62 13 73.5 19 71 44 C69 34 62 29 50 29 C38 29 31 34 29 44 Z",
-  braid: "M29 46 C26 17 39 11 50 11 C61 11 74 17 71 46 C69 34.5 60 29 51 29.5 L50 19 L49 29.5 C40 29 31 34.5 29 46 Z",
-  bob: "M27.5 51 C23 15 39 9.5 50 9.5 C61 9.5 77 15 72.5 51 C71 37 63 29.5 50 29.5 C37 29.5 29 37 27.5 51 Z",
-  long: "M27.5 48 C23 15 39 9.5 50 9.5 C61 9.5 77 15 72.5 48 C70.5 36 60 29.5 51 30 C42 29.5 30 36 27.5 48 Z",
-  buzz: "M31 37 C31 19.5 40 16.5 50 16.5 C60 16.5 69 19.5 69 37 C66 28.5 59 25 50 25 C41 25 34 28.5 31 37 Z",
+  // Full, side-swept crop that puffs out above the ears.
+  short: "M27.6 49 C21.5 29 31 12.5 49 12 C66 11.5 79 23 74.6 43 C74 46 73 48 71.8 49.5 C71.4 40 68.6 33 63.4 29.6 C56 33 45.5 32.2 39.4 27.6 C34.6 32 31 39 30.4 47 Z",
+  // Shoulder-skimming, deep side part, hair framing the cheeks.
+  sidepart: "M24.4 63 C19.4 30 32 11.5 50.5 11.5 C69 11.5 81 30 75.6 63 C74 64.4 72 64.4 70.6 62.4 C71.2 47 69.4 35.6 62.6 29.2 C55 32.2 43.6 31 36.6 25.6 C31.6 32 29.4 42 29.4 52 C29.4 56 29.8 60 29.4 62.4 C28 64.4 26 64.4 24.4 63 Z",
+  // Hair pulled back smooth to a top bun.
+  bun: "M28.8 47 C26 19 37.6 13 50 13 C62.4 13 74 19 71.2 47 C69.6 35 63 28.6 50 28.6 C37 28.6 30.4 35 28.8 47 Z",
+  // Centre part, pulled back into a side braid.
+  braid: "M28.4 48 C25.6 18 38.6 12 50 12 C61.4 12 74.4 18 71.6 48 C70 35.6 61.6 29.6 51.4 29.8 L50 20 L48.6 29.8 C38.4 29.6 30 35.6 28.4 48 Z",
+  // Straight, chin-length bob with a soft side fringe.
+  bob: "M24.6 61 C20 29 32.6 11.6 50 11.6 C67.4 11.6 80 29 75.4 61 L70.8 61 C71.4 46 69.6 36 63 30 C56 33.4 44.6 32 37.4 27 C32 33 29.4 43 29.2 61 Z",
+  // Long and straight, centre part, falling past the shoulders.
+  long: "M24.6 70 C20.4 30 31 11.6 50 11.6 C69 11.6 79.6 30 75.4 70 L70.6 70 C71 53 70 39 64.4 31 C58.6 27.6 53.2 24 50 19.6 C46.8 24 41.4 27.6 35.6 31 C30 39 29 53 29.4 70 Z",
+  // Close crop that follows the head.
+  fade: "M30.6 36 C30.6 16 40 13 50 13 C60 13 69.4 16 69.4 36 C66.6 26.4 59.4 23 50 23 C40.6 23 33.4 26.4 30.6 36 Z",
+  buzz: "M30.6 38 C30.6 20 40 16.6 50 16.6 C60 16.6 69.4 20 69.4 38 C66.6 29.4 59.4 26 50 26 C40.6 26 33.4 29.4 30.6 38 Z",
 };
 
 const CURLS: Array<[number, number, number]> = (() => {
   const out: Array<[number, number, number]> = [];
-  for (let a = 200; a >= -20; a -= 22) {
+  // A full ring of curls framing the face, down to the jaw.
+  for (let a = 232; a >= -52; a -= 16) {
     const r = (a * Math.PI) / 180;
-    out.push([50 + Math.cos(r) * 21, 40 - Math.sin(r) * 22, 6.6]);
+    out.push([50 + Math.cos(r) * 25, 40 - Math.sin(r) * 25, 7.4]);
   }
-  out.push([42, 22, 6.5], [50, 19.5, 6.8], [58, 22, 6.5]);
+  out.push([38, 20, 7], [46, 16, 7.4], [54, 16, 7.4], [62, 20, 7], [42, 25, 6], [50, 23, 6.2], [58, 25, 6]);
   return out;
 })();
 
@@ -108,10 +119,12 @@ export function AvatarFace({ look, seed, items = [], size = 40, faded = false, v
   const top = TOPS[h % TOPS.length] ?? TOPS[0]!;
   const pants = PANTS[(h >> 2) % PANTS.length] ?? PANTS[0]!;
   const blob = BLOBS[(Math.imul(h, 2654435761) >>> 0) % BLOBS.length] ?? BLOBS[0]!;
-  const wrap = look.hair === "hijab" ? top : TOPS[(h + 2) % TOPS.length] ?? top;
+  const wrap = TOPS[(h + 2) % TOPS.length] ?? top;
   const hijab = look.hair === "hijab";
   const turban = look.hair === "turban";
   const extra = (x: AvatarLook["extras"][number]) => look.extras.includes(x);
+  // Facial hair is offered to men and non-binary people only.
+  const facialHair = look.gender === "woman" ? "none" : look.facialHair;
 
   const show = full || size >= ITEMS_MIN_SIZE;
   const has = (i: ItemId) => show && items.includes(i);
@@ -161,25 +174,41 @@ export function AvatarFace({ look, seed, items = [], size = 40, faded = false, v
         <stop offset="1" stopColor={GOLD} />
       </radialGradient>
       <linearGradient id={id("straw")} x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0" stopColor="#ffe9a8" />
-        <stop offset="1" stopColor="#e8b85a" />
+        <stop offset="0" stopColor="#ffd96a" />
+        <stop offset="1" stopColor="#efa51c" />
       </linearGradient>
       <linearGradient id={id("dark")} x1="0" y1="0" x2="0" y2="1">
         <stop offset="0" stopColor="#4a4a52" />
         <stop offset="1" stopColor="#1f1f24" />
       </linearGradient>
       <linearGradient id={id("surf")} x1="0" y1="0" x2="1" y2="0">
-        <stop offset="0" stopColor="#6fe0d4" />
-        <stop offset="1" stopColor="#219a95" />
+        <stop offset="0" stopColor="#d2eeff" />
+        <stop offset="1" stopColor="#5cb2ef" />
+      </linearGradient>
+      <linearGradient id={id("surfDeep")} x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0" stopColor="#8fd0ff" />
+        <stop offset="1" stopColor="#2f86d8" />
       </linearGradient>
       <linearGradient id={id("mat")} x1="0" y1="0" x2="1" y2="0">
-        <stop offset="0" stopColor="#c4b2ff" />
-        <stop offset="1" stopColor="#6f55d8" />
+        <stop offset="0" stopColor="#8fbcff" />
+        <stop offset="1" stopColor="#2f63c9" />
       </linearGradient>
-      <linearGradient id={id("boot")} x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0" stopColor="#c58a57" />
-        <stop offset="1" stopColor="#7b4c28" />
+      <linearGradient id={id("boot")} x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stopColor="#d29a66" />
+        <stop offset="1" stopColor="#97602f" />
       </linearGradient>
+      <radialGradient id={id("shoe")} cx="0.35" cy="0.2" r="0.9">
+        <stop offset="0" stopColor="#ffffff" />
+        <stop offset="1" stopColor="#d9dde4" />
+      </radialGradient>
+      <radialGradient id={id("apron")} cx="0.3" cy="0.2" r="1">
+        <stop offset="0" stopColor="#ffffff" />
+        <stop offset="1" stopColor="#dde2ea" />
+      </radialGradient>
+      <radialGradient id={id("ivory")} cx="0.35" cy="0.25" r="0.9">
+        <stop offset="0" stopColor="#fbfaf4" />
+        <stop offset="1" stopColor="#cfc9b4" />
+      </radialGradient>
       <clipPath id={id("blob")}>
         <path d={BLOB} />
       </clipPath>
@@ -190,8 +219,15 @@ export function AvatarFace({ look, seed, items = [], size = 40, faded = false, v
 
   const hairBack = (
     <>
-      {hijab && <path d="M23 44 C19 9 81 9 77 44 C81 60 79 78 70 90 L30 90 C21 78 19 60 23 44 Z" fill={url("wrap")} />}
+      {hijab && <path d="M24 46 C20 6 80 6 76 46 C79 60 80 72 80 82 L20 82 C20 72 21 60 24 46 Z" fill={url("wrap")} />}
       {!hijab && HAIR_BACK[look.hair] && <path d={HAIR_BACK[look.hair]} fill={url("hair")} />}
+      {look.hair === "curly" && (
+        <g fill={url("hair")}>
+          {CURLS.map(([cx, cy, r]) => (
+            <circle key={`${cx.toFixed(1)}-${cy.toFixed(1)}`} cx={cx} cy={cy} r={r} />
+          ))}
+        </g>
+      )}
     </>
   );
 
@@ -201,112 +237,34 @@ export function AvatarFace({ look, seed, items = [], size = 40, faded = false, v
     <>
       {has("headphones") && (
         <g>
-          <path d="M36 66 C38 76 62 76 64 66" stroke="#2b2b30" strokeWidth="2.6" fill="none" strokeLinecap="round" />
-          <ellipse cx="36.5" cy="68" rx="4" ry="5" fill="#e04b86" />
-          <ellipse cx="63.5" cy="68" rx="4" ry="5" fill="#e04b86" />
-          <ellipse cx="36" cy="66.5" rx="1.4" ry="2" fill="#ffffff" opacity="0.35" />
+          <path d="M36 66 C38 76 62 76 64 66" stroke={url("ivory")} strokeWidth="3" fill="none" strokeLinecap="round" />
+          <ellipse cx="36.5" cy="68" rx="4.4" ry="5.4" fill={url("ivory")} />
+          <ellipse cx="63.5" cy="68" rx="4.4" ry="5.4" fill={url("ivory")} />
+          <ellipse cx="38.4" cy="68.6" rx="1.2" ry="3.2" fill="#b9b39b" />
+          <ellipse cx="61.6" cy="68.6" rx="1.2" ry="3.2" fill="#b9b39b" />
         </g>
       )}
-      {(has("camera") || has("binoculars")) && <path d="M42 70 L47 84 M58 70 L53 84" stroke="#2b2b30" strokeWidth="1.3" fill="none" />}
-      {has("camera") && (
-        <g transform={`translate(${has("binoculars") ? 42 : 50} 87)`}>
-          <rect x="-8" y="-5.5" width="16" height="11" rx="2.5" fill={url("dark")} />
-          <rect x="-5" y="-7.5" width="5" height="2.5" rx="1" fill="#3a3a42" />
-          <circle cx="1" cy="0.5" r="3.8" fill="#596070" stroke="#c8ccd6" strokeWidth="1" />
-          <circle cx="0" cy="-0.5" r="1.1" fill="#ffffff" opacity="0.6" />
-        </g>
-      )}
-      {has("binoculars") && (
-        <g transform={`translate(${has("camera") ? 58.5 : 50} 87)`}>
-          <rect x="-7.5" y="-5" width="6.5" height="11" rx="2.5" fill={url("dark")} />
-          <rect x="1" y="-5" width="6.5" height="11" rx="2.5" fill={url("dark")} />
-          <rect x="-1.5" y="-2" width="3" height="4" fill="#3a3a42" />
-          <circle cx="-4.2" cy="4.5" r="1.8" fill="#7fb2ff" />
-          <circle cx="4.2" cy="4.5" r="1.8" fill="#7fb2ff" />
-        </g>
-      )}
+      {!full &&
+        (["camera", "binoculars"] as const).filter(has).map((item, i, all) => (
+          <g key={item}>
+            <path d={`M${all.length === 2 ? 42 + i * 16 : 44} 71 L${all.length === 2 ? 42 + i * 16 : 50} 83`} stroke="#3a3a42" strokeWidth="1.1" />
+            <ItemArt id={item} x={all.length === 2 ? 32 + i * 18 : 41} y={80} size={all.length === 2 ? 17 : 19} />
+          </g>
+        ))}
     </>
   );
 
-  const head = (
+  /** Hats and extras in head coordinates (mouth at 50,57.6), shared by drawn and sheet avatars. */
+  const headwear = (
     <>
-      {!hijab && (
-        <>
-          <circle cx="29.5" cy="45" r="5.4" fill={url("ear")} />
-          <circle cx="29.9" cy="45.3" r="2.4" fill={shade(skin, -0.14)} />
-          <circle cx="70.5" cy="45" r="5.4" fill={url("ear")} />
-          <circle cx="70.1" cy="45.3" r="2.4" fill={shade(skin, -0.14)} />
-        </>
-      )}
-      <ellipse cx="50" cy="42" rx="20.5" ry="21" fill={url("skin")} />
-      <ellipse cx="44" cy="31" rx="7" ry="4" fill="#ffffff" opacity="0.12" />
-
-      <path d="M39 37.6 Q42.5 36 46 37.3" stroke={hijab || turban ? "#2a2222" : shade(hair, -0.15)} strokeWidth="2.3" fill="none" strokeLinecap="round" />
-      <path d="M54 37.3 Q57.5 36 61 37.6" stroke={hijab || turban ? "#2a2222" : shade(hair, -0.15)} strokeWidth="2.3" fill="none" strokeLinecap="round" />
-      <ellipse cx="42.5" cy="43.5" rx="2.3" ry="2.9" fill="#1d1b1f" />
-      <ellipse cx="57.5" cy="43.5" rx="2.3" ry="2.9" fill="#1d1b1f" />
-      <circle cx="43.3" cy="42.4" r="0.85" fill="#ffffff" />
-      <circle cx="58.3" cy="42.4" r="0.85" fill="#ffffff" />
-      <ellipse cx="38" cy="50" rx="3.2" ry="1.9" fill="#ff8a7a" opacity="0.16" />
-      <ellipse cx="62" cy="50" rx="3.2" ry="1.9" fill="#ff8a7a" opacity="0.16" />
-      <ellipse cx="50" cy="49" rx="2.6" ry="2.1" fill={shade(skin, -0.1)} />
-      <ellipse cx="49.3" cy="48.3" rx="1" ry="0.65" fill={shade(skin, 0.3)} />
-
-      {look.facialHair === "stubble" && (
-        <path d="M32 47 C33 63 43 67.5 50 67.5 C57 67.5 67 63 68 47 C64.5 57 58 60.5 50 60.5 C42 60.5 35.5 57 32 47 Z" fill={hair} opacity="0.2" />
-      )}
-      {look.facialHair === "beard" && (
-        <path d="M30 41 C29.5 63 40 69.5 50 69.5 C60 69.5 70.5 63 70 41 C68 52 63.5 57.5 58 56.3 C54.5 55.5 45.5 55.5 42 56.3 C36.5 57.5 32 52 30 41 Z" fill={url("hair")} />
-      )}
-      <path d="M45.4 54 Q50 60 54.6 54 Q50 55.8 45.4 54 Z" fill="#6b2a24" />
-      <path d="M46.2 54.5 Q50 55.9 53.8 54.5 L53.3 55.5 Q50 56.6 46.7 55.5 Z" fill="#ffffff" />
-      <path d="M47.6 57.6 Q50 59 52.4 57.6 Q50 57 47.6 57.6 Z" fill="#e3746a" />
-      {(look.facialHair === "moustache" || look.facialHair === "beard") && (
-        <path d="M41.5 53.2 C43.5 50.6 47.8 50.8 50 52.2 C52.2 50.8 56.5 50.6 58.5 53.2 C56 52.8 53 53.5 50 53.1 C47 53.5 44 52.8 41.5 53.2 Z" fill={url("hair")} />
-      )}
-
-      {look.hair === "turban" ? (
-        <>
-          <path d="M27 40 C22 12 36 2.5 50 2.5 C64 2.5 78 12 73 40 C67 32 58 29 50 29 C42 29 33 32 27 40 Z" fill={url("wrap")} />
-          <path d="M29.5 30 C40 22 60 22 70.5 30" stroke={shade(wrap, -0.22)} strokeWidth="1.7" fill="none" strokeLinecap="round" />
-          <path d="M32 21.5 C42 15 58 15 68 21.5" stroke={shade(wrap, -0.22)} strokeWidth="1.7" fill="none" strokeLinecap="round" />
-          <path d="M50 4.5 C44 15 46 24 50 29" stroke={shade(wrap, -0.22)} strokeWidth="1.7" fill="none" strokeLinecap="round" />
-        </>
-      ) : look.hair === "hijab" ? (
-        <path d="M27.5 46 C26 11 74 11 72.5 46 C70 29.5 61 25 50 25 C39 25 30 29.5 27.5 46 Z" fill={url("wrap")} />
-      ) : look.hair === "curly" ? (
-        <g fill={url("hair")}>
-          {CURLS.map(([cx, cy, r]) => (
-            <circle key={`${cx.toFixed(1)}-${cy.toFixed(1)}`} cx={cx} cy={cy} r={r} />
-          ))}
-        </g>
-      ) : (
-        <>
-          <path d={HAIR_FRONT[look.hair]} fill={url("hair")} opacity={look.hair === "buzz" ? 0.88 : 1} />
-          {look.hair === "bun" && (
-            <>
-              <circle cx="50" cy="10" r="7.5" fill={url("hair")} />
-              <rect x="44.5" y="15" width="11" height="2.8" rx="1.4" fill={shade(top, 0.1)} />
-            </>
-          )}
-          {look.hair !== "buzz" && <path d="M37 18.5 C41 15 46 13.8 50.5 13.8" stroke="#ffffff" strokeOpacity="0.3" strokeWidth="2.2" fill="none" strokeLinecap="round" />}
-        </>
-      )}
-      {look.hair === "braid" && (
-        <g fill={url("hair")}>
-          {[56, 63, 70, 77].map((y, i) => (
-            <ellipse key={y} cx={71 - i * 0.6} cy={y} rx="4.3" ry="4.1" />
-          ))}
-          <path d="M66.5 81.5 L69.3 88 L72 81.5 Z" />
-        </g>
-      )}
-
       {has("snorkel") && (
         <g>
-          <path d="M30 29 C40 24 60 24 70 29" stroke="#1f9fb8" strokeWidth="2.4" fill="none" />
-          <rect x="38" y={hat ? 30 : 24.5} width="24" height="9" rx="4.5" fill="#27b4cf" />
-          <rect x="40.5" y={hat ? 31.8 : 26.3} width="19" height="5.4" rx="2.7" fill="#bff2fb" opacity="0.85" />
-          <path d={`M66 ${hat ? 32 : 26.5} C72 24 72 14 70 8`} stroke="#ffcc33" strokeWidth="2.6" fill="none" strokeLinecap="round" />
+          <path d="M29.5 30 C40 25 60 25 70.5 30" stroke="#26385f" strokeWidth="2.4" fill="none" />
+          <path d={`M66 ${hat ? 33 : 27.5} C71.5 25 71.5 15 69.6 9`} stroke="#26385f" strokeWidth="2.8" fill="none" strokeLinecap="round" />
+          <path d="M68.2 9.6 L68.6 5.4 C69.8 4.6 71.4 4.6 71.8 5.4 L71.6 9.6 Z" fill="#f59a2a" />
+          <rect x="37.5" y={hat ? 30 : 24} width="25" height="10.5" rx="5.2" fill="#f59a2a" />
+          <rect x="40" y={hat ? 31.9 : 25.9} width="20" height="6.7" rx="3.3" fill="#6fbcf2" />
+          <ellipse cx="44" cy={hat ? 33.4 : 27.4} rx="2.6" ry="0.9" fill="#fff" opacity="0.7" />
         </g>
       )}
       {hat && (
@@ -319,11 +277,16 @@ export function AvatarFace({ look, seed, items = [], size = 40, faded = false, v
       )}
       {helmet && (
         <g>
-          <path d="M28.5 33 C28.5 12 71.5 12 71.5 33 C64 30 36 30 28.5 33 Z" fill="#f2703e" />
+          <path d="M28.5 33 C28.5 12 71.5 12 71.5 33 C64 30 36 30 28.5 33 Z" fill="#3f7be0" />
           <path d="M40 16 V27 M50 14 V27 M60 16 V27" stroke="#ffffff" strokeOpacity="0.7" strokeWidth="2" strokeLinecap="round" />
         </g>
       )}
 
+    </>
+  );
+  const extrasArt = (
+    <>
+      <g transform="translate(0 2)">
       {extra("bindi") && <circle cx="50" cy="33.8" r="1.5" fill="#d32f2f" />}
       {extra("nosepin") && <circle cx="52.9" cy="49.7" r="0.95" fill={url("gold")} />}
       {extra("jhumkas") && !hijab && (
@@ -342,6 +305,93 @@ export function AvatarFace({ look, seed, items = [], size = 40, faded = false, v
           <path d="M40.2 41 L42.2 39.6 M55.2 41 L57.2 39.6" stroke="#ffffff" strokeOpacity="0.7" strokeWidth="1" strokeLinecap="round" />
         </g>
       )}
+      </g>
+    </>
+  );
+
+  const head = (
+    <>
+      {!hijab && (
+        <>
+          <ellipse cx="29.6" cy="47" rx="5" ry="5.8" fill={url("ear")} />
+          <ellipse cx="30" cy="47.3" rx="2.2" ry="2.8" fill={shade(skin, -0.14)} />
+          <ellipse cx="70.4" cy="47" rx="5" ry="5.8" fill={url("ear")} />
+          <ellipse cx="70" cy="47.3" rx="2.2" ry="2.8" fill={shade(skin, -0.14)} />
+        </>
+      )}
+      <path d="M50 20 C62.4 20 70.6 29 70.6 41.6 C70.6 55 61.4 64.4 50 64.4 C38.6 64.4 29.4 55 29.4 41.6 C29.4 29 37.6 20 50 20 Z" fill={url("skin")} />
+      <ellipse cx="44" cy="31" rx="7" ry="4" fill="#ffffff" opacity="0.12" />
+
+      <g transform="translate(0 2)">
+      <path d="M39 37.6 Q42.5 36 46 37.3" stroke={hijab || turban ? "#2a2222" : shade(hair, -0.15)} strokeWidth="1.7" fill="none" strokeLinecap="round" />
+      <path d="M54 37.3 Q57.5 36 61 37.6" stroke={hijab || turban ? "#2a2222" : shade(hair, -0.15)} strokeWidth="1.7" fill="none" strokeLinecap="round" />
+      <ellipse cx="42.4" cy="43.5" rx="3" ry="3.6" fill="#1d1b1f" />
+      <ellipse cx="57.6" cy="43.5" rx="3" ry="3.6" fill="#1d1b1f" />
+      <circle cx="43.4" cy="42.2" r="1" fill="#ffffff" />
+      <circle cx="58.6" cy="42.2" r="1" fill="#ffffff" />
+      <ellipse cx="38" cy="50" rx="3.2" ry="1.9" fill="#ff8a7a" opacity="0.22" />
+      <ellipse cx="62" cy="50" rx="3.2" ry="1.9" fill="#ff8a7a" opacity="0.22" />
+      <ellipse cx="50" cy="49" rx="2.6" ry="2.1" fill={shade(skin, -0.1)} />
+      <ellipse cx="49.3" cy="48.3" rx="1" ry="0.65" fill={shade(skin, 0.3)} />
+
+      {facialHair === "stubble" && (
+        <path d="M32 47 C33 63 43 67.5 50 67.5 C57 67.5 67 63 68 47 C64.5 57 58 60.5 50 60.5 C42 60.5 35.5 57 32 47 Z" fill={hair} opacity="0.2" />
+      )}
+      {facialHair === "beard" && (
+        <path d="M30 41 C29.5 63 40 69.5 50 69.5 C60 69.5 70.5 63 70 41 C68 52 63.5 57.5 58 56.3 C54.5 55.5 45.5 55.5 42 56.3 C36.5 57.5 32 52 30 41 Z" fill={url("hair")} />
+      )}
+      <path d="M44.8 53.6 Q50 61 55.2 53.6 Q50 55.6 44.8 53.6 Z" fill="#6b2a24" />
+      <path d="M45.8 54.2 Q50 55.8 54.2 54.2 L53.6 55.4 Q50 56.6 46.4 55.4 Z" fill="#ffffff" />
+      <path d="M47.6 57.6 Q50 59 52.4 57.6 Q50 57 47.6 57.6 Z" fill="#e3746a" />
+      {(facialHair === "moustache" || facialHair === "beard") && (
+        <path d="M41.5 53.2 C43.5 50.6 47.8 50.8 50 52.2 C52.2 50.8 56.5 50.6 58.5 53.2 C56 52.8 53 53.5 50 53.1 C47 53.5 44 52.8 41.5 53.2 Z" fill={url("hair")} />
+      )}
+      </g>
+
+      {look.hair === "turban" ? (
+        <>
+          {/* Rounded, high wrap with diagonal folds; ears stay visible (after the sheet). */}
+          <path d="M27.6 38 C22.6 13 35.6 3.6 50 3.6 C64.4 3.6 77.4 13 72.4 38 C66.4 33 58.4 31 50 31 C41.6 31 33.6 33 27.6 38 Z" fill={url("wrap")} />
+          <path d="M29.4 31.6 C38 20 54 12 69.4 15" stroke={shade(wrap, -0.2)} strokeWidth="1.5" fill="none" strokeLinecap="round" />
+          <path d="M31.6 22 C40 13 52 8.4 63 8.6" stroke={shade(wrap, -0.2)} strokeWidth="1.5" fill="none" strokeLinecap="round" />
+          <path d="M44 31.2 C52 24 62 21.4 71.6 24.4" stroke={shade(wrap, -0.2)} strokeWidth="1.5" fill="none" strokeLinecap="round" />
+          <ellipse cx="40" cy="12" rx="6" ry="2.4" fill="#ffffff" opacity="0.28" transform="rotate(-20 40 12)" />
+        </>
+      ) : look.hair === "hijab" ? (
+        <>
+          {/* Wraps the head and frames the face closely, down past the cheeks. */}
+          <path d="M26.6 58 C22 14 78 14 73.4 58 C72 60 70.4 60 69.6 58.6 C71 38 63 26.4 50 26.4 C37 26.4 29 38 30.4 58.6 C29.6 60 28 60 26.6 58 Z" fill={url("wrap")} />
+          <path d="M33 22 C40 17 48 15.6 56 16.6" stroke="#ffffff" strokeOpacity="0.3" strokeWidth="2" fill="none" strokeLinecap="round" />
+        </>
+      ) : look.hair === "curly" ? (
+        <g fill={url("hair")}>
+          {CURLS.filter(([, cy]) => cy < 31).map(([cx, cy, r]) => (
+            <circle key={`${cx.toFixed(1)}-${cy.toFixed(1)}`} cx={cx} cy={cy} r={r} />
+          ))}
+        </g>
+      ) : (
+        <>
+          <path d={HAIR_FRONT[look.hair]} fill={url("hair")} opacity={look.hair === "buzz" ? 0.88 : 1} />
+          {look.hair === "bun" && (
+            <>
+              <circle cx="50" cy="8.6" r="8.4" fill={url("hair")} />
+              <path d="M44 9 C46 5 54 5 56 9" stroke="#ffffff" strokeOpacity="0.25" strokeWidth="1.4" fill="none" strokeLinecap="round" />
+            </>
+          )}
+          {look.hair !== "buzz" && <path d="M37 18.5 C41 15 46 13.8 50.5 13.8" stroke="#ffffff" strokeOpacity="0.3" strokeWidth="2.2" fill="none" strokeLinecap="round" />}
+        </>
+      )}
+      {look.hair === "braid" && (
+        <g fill={url("hair")}>
+          {[56, 63, 70, 77, 84].map((y, i) => (
+            <ellipse key={y} cx={29 + i * 0.5} cy={y} rx="4.2" ry="4" />
+          ))}
+          <path d="M28 88 L31 94 L33.6 88 Z" />
+        </g>
+      )}
+
+      {headwear}
+      {extrasArt}
     </>
   );
 
@@ -350,161 +400,215 @@ export function AvatarFace({ look, seed, items = [], size = 40, faded = false, v
   /* ---------- Full length ---------- */
 
   if (full) {
-    const wide = look.gender === "man";
-    const torso = wide
-      ? "M31 78 C31 71 38 67 44 67 L56 67 C62 67 69 71 69 78 L67 124 L33 124 Z"
-      : look.gender === "woman"
-        ? "M34 78 C34 71 40 68 44 68 L56 68 C60 68 66 71 66 78 L64 104 C67 112 68 118 68 124 L32 124 C32 118 33 112 36 104 Z"
-        : "M32 78 C32 71 39 67 44 67 L56 67 C61 67 68 71 68 78 L67 124 L33 124 Z";
-    const shoulderL = wide ? 33 : 35;
-    const shoulderR = wide ? 67 : 65;
+    // Stance after the reference: big round head, short-sleeve tee, arms straight down,
+    // straight trousers and chunky sneakers. Big gear (tent, cycle, surfboard) stands behind as a backdrop.
+    const torso =
+      look.gender === "woman"
+        ? "M38.5 66 C33 66 28.6 69 27.2 75 L23.6 91.5 C26.6 94 30.6 94.6 33.6 93.6 L34.6 88 L35.6 104 L34.6 117 C41 119 59 119 65.4 117 L64.4 104 L65.4 88 L66.4 93.6 C69.4 94.6 73.4 94 76.4 91.5 L72.8 75 C71.4 69 67 66 61.5 66 C57.5 69.6 42.5 69.6 38.5 66 Z"
+        : "M38 66 C32.5 66 28 69 26.6 75 L23 91.5 C26 94 30 94.6 33 93.6 L33.6 88 L33.2 117 C40 119 60 119 66.8 117 L66.4 88 L67 93.6 C70 94.6 74 94 77 91.5 L73.4 75 C72 69 67.5 66 62 66 C58 69.6 42 69.6 38 66 Z";
+    const handL: [number, number] = [26.4, 128.5];
+    const handR: [number, number] = [73.6, 128.5];
+    const tote = has("shopping");
+    const carried = (["diya", "book"] as const).filter(has);
+    const handSlots: Array<[number, number]> = tote ? [handR] : [handR, handL];
+    const inHand = carried.slice(0, handSlots.length);
+    const onGround = carried.slice(handSlots.length);
+    const chest = (["camera", "binoculars"] as const).filter(has);
     return (
       <svg width={size} height={size * 2} viewBox="0 0 100 200" aria-hidden style={svgStyle}>
         {defs}
-        <ellipse cx="50" cy="195" rx="30" ry="4.5" fill="#000" opacity="0.1" />
 
-        {/* Behind the body */}
+        {/* Backdrop: the big gear, stacked behind the figure */}
+        {has("tent") && <ItemArt id="tent" x={has("surfboard") ? -42 : -30} y={106} size={100} />}
         {has("surfboard") && (
-          <g transform="translate(78 130) rotate(8)">
-            <ellipse cx="0" cy="0" rx="8" ry="40" fill={url("surf")} />
-            <path d="M0 -38 V38" stroke="#fff" strokeOpacity="0.85" strokeWidth="1.8" />
-            <ellipse cx="-3" cy="-20" rx="2" ry="9" fill="#fff" opacity="0.35" />
+          <g transform="translate(80 108) rotate(9)">
+            <clipPath id={id("board")}>
+              <ellipse cx="0" cy="0" rx="12" ry="70" />
+            </clipPath>
+            <ellipse cx="0" cy="0" rx="12" ry="70" fill={url("surf")} />
+            <g clipPath={url("board")}>
+              <path d="M-14 22 Q-8 18 -2 22 T10 22 T22 22 V80 H-14 Z" fill={url("surfDeep")} />
+              {[22, 32, 42].map((y, i) => (
+                <path key={y} d={`M-14 ${y} Q-8 ${y - 4} -2 ${y} T10 ${y} T22 ${y}`} stroke="#fff" strokeOpacity={0.95 - i * 0.15} strokeWidth="2" fill="none" />
+              ))}
+            </g>
+            <path d="M0 -68 V68" stroke="#fff" strokeOpacity="0.55" strokeWidth="1.2" />
+            <ellipse cx="-4.5" cy="-38" rx="2.6" ry="17" fill="#fff" opacity="0.45" />
           </g>
         )}
+        {has("cycle") && <ItemArt id="cycle" x={-5} y={96} size={110} />}
+
+        <ellipse cx="50" cy="193" rx="27" ry="4" fill="#000" opacity="0.1" />
         {has("yogamat") && (
-          <g transform="translate(50 92) rotate(-35)">
-            <rect x="-6" y="-34" width="12" height="68" rx="6" fill={url("mat")} />
-            <ellipse cx="0" cy="-34" rx="6" ry="2.8" fill="#ddd2ff" />
+          <g transform="translate(50 96) rotate(-38)">
+            <rect x="-7" y="-44" width="14" height="88" rx="7" fill={url("mat")} />
+            <rect x="-4.6" y="-40" width="2.6" height="80" rx="1.3" fill="#fff" opacity="0.3" />
+            <ellipse cx="0" cy="-44" rx="7" ry="3.2" fill="#9cc4ff" />
+            <ellipse cx="0" cy="-44" rx="2.6" ry="1.2" fill="#1d4fb8" />
           </g>
         )}
         <g transform={HEAD_SCALE}>{hairBack}</g>
 
-        {/* Legs and shoes */}
-        <path d="M34 120 H49 L48 186 H38 Z" fill={url("pants")} />
-        <path d="M51 120 H66 L62 186 H52 Z" fill={url("pants")} />
-        <path d="M49.8 124 V178" stroke={shade(pants, -0.35)} strokeWidth="0.8" opacity="0.6" />
+        {/* Legs: straight trousers, a bit of ankle, chunky sneakers (or boots) */}
+        <rect x="37.5" y="170" width="9" height="12" rx="3" fill={url("limb")} />
+        <rect x="53.5" y="170" width="9" height="12" rx="3" fill={url("limb")} />
+        <path d="M33.4 114 H66.6 L66 176 C66 177.2 65.2 178 64 178 H52.6 C51.5 178 50.7 177.2 50.6 176 L50.4 130 H49.6 L49.4 176 C49.3 177.2 48.5 178 47.4 178 H36 C34.8 178 34 177.2 34 176 Z" fill={url("pants")} />
+        <path d="M41.6 132 V174 M58.4 132 V174" stroke="#fff" strokeOpacity="0.14" strokeWidth="1.6" strokeLinecap="round" />
+        <path d="M50 118 V129" stroke={shade(pants, -0.35)} strokeWidth="0.8" opacity="0.6" />
         {has("boots") ? (
-          <>
-            {[[36, 1], [51, -1]].map(([x, f]) => (
-              <g key={x} transform={`translate(${x} 176)`}>
-                <path d={f === 1 ? "M0 0 H12 V10 L15 12 C16 14 15.5 18 14 18 H-4 C-5 18 -5.5 17 -5 15.5 L0 11 Z" : "M0 0 H12 V11 L17 15.5 C17.5 17 17 18 16 18 H-2 C-3.5 18 -4 14 -3 12 L0 10 Z"} fill={url("boot")} />
-                <rect x={f === 1 ? -5 : -3} y="16.5" width="20" height="3" rx="1.4" fill="#3a2a1e" />
-                <path d="M2.5 3 H9.5 M2.5 6 H9.5" stroke="#f6d7a0" strokeWidth="1" strokeLinecap="round" />
-              </g>
-            ))}
-          </>
+          [[34.2, 1], [50.8, -1]].map(([x, f]) => (
+            <g key={x} transform={`translate(${x} 0)`}>
+              <path d={f === 1 ? "M1 166 H14.6 V182 C15.6 183 16 184.6 15.8 186.6 H-1.6 C-1.8 184 -0.6 182 1 181 Z" : "M0.4 166 H14 V181 C15.6 182 16.8 184 16.6 186.6 H-0.8 C-1 184.6 -0.6 183 0.4 182 Z"} fill={url("boot")} />
+              <rect x="0.4" y="165" width="14.6" height="4" rx="2" fill="#5a3418" />
+              <rect x={f === 1 ? -2.2 : -1.2} y="185.4" width="19" height="4.2" rx="2" fill="#efe3c8" />
+            </g>
+          ))
         ) : (
           <>
-            <path d="M37 184 H49 C49.5 189 49 193 47 194 H32 C30 194 30 190 33 188 Z" fill="#f4f5f8" />
-            <path d="M51 184 H63 L67 188 C70 190 70 194 68 194 H53 C51 193 50.5 189 51 184 Z" fill="#f4f5f8" />
-            <path d="M31 193 H48 M52 193 H69" stroke="#c9ccd4" strokeWidth="2" strokeLinecap="round" />
+            <path d="M35.6 180.4 C35.6 177.6 37.6 176.4 40.6 176.4 H45 C47.8 176.4 49.4 178 49.4 180.6 L49.8 188 H32.6 C32.2 184.8 33.4 182 35.6 180.4 Z" fill={url("shoe")} />
+            <path d="M50.6 180.6 C50.6 178 52.2 176.4 55 176.4 H59.4 C62.4 176.4 64.4 177.6 64.4 180.4 C66.6 182 67.8 184.8 67.4 188 H50.2 Z" fill={url("shoe")} />
+            <rect x="32" y="186.6" width="18.2" height="4.4" rx="2.2" fill="#c99a68" />
+            <rect x="49.8" y="186.6" width="18.2" height="4.4" rx="2.2" fill="#c99a68" />
+            <path d="M39 180.2 H44.6 M55.4 180.2 H61" stroke="#c9ccd4" strokeWidth="1.1" strokeLinecap="round" />
           </>
         )}
 
-        {/* Arms */}
-        <path d={`M${shoulderL + 1} 72 C${shoulderL - 6} 78 ${shoulderL - 8} 100 ${shoulderL - 6} 118`} stroke={url("top")} strokeWidth="10" fill="none" strokeLinecap="round" />
-        <path d={`M${shoulderR - 1} 72 C${shoulderR + 6} 78 ${shoulderR + 8} 100 ${shoulderR + 6} 118`} stroke={url("top")} strokeWidth="10" fill="none" strokeLinecap="round" />
-        <path d={`M${shoulderL - 7} 100 L${shoulderL - 6} 118`} stroke={url("limb")} strokeWidth="8" strokeLinecap="round" />
-        <path d={`M${shoulderR + 7} 100 L${shoulderR + 6} 118`} stroke={url("limb")} strokeWidth="8" strokeLinecap="round" />
-        <circle cx={shoulderL - 6} cy="121" r="5" fill={url("limb")} />
-        <circle cx={shoulderR + 6} cy="121" r="5" fill={url("limb")} />
+        {/* Arms hang straight; the sleeves cover their tops */}
+        <path d="M28.2 90 L26.6 126" stroke={url("limb")} strokeWidth="9" strokeLinecap="round" />
+        <path d="M71.8 90 L73.4 126" stroke={url("limb")} strokeWidth="9" strokeLinecap="round" />
+        <ellipse cx={handL[0]} cy={handL[1]} rx="5" ry="5.6" fill={url("limb")} />
+        <ellipse cx={handR[0]} cy={handR[1]} rx="5" ry="5.6" fill={url("limb")} />
 
-        {/* Torso */}
+        {/* Tee */}
         <path d={torso} fill={url("top")} />
-        {look.gender === "man" && (
-          <>
-            <path d="M42 67.5 L50 77 L58 67.5 Z" fill={url("neck")} />
-            <path d="M40 68 L45 66.5 L50 75 L45.5 81 Z" fill="#ffffff" />
-            <path d="M60 68 L55 66.5 L50 75 L54.5 81 Z" fill="#ececf1" />
-            <path d="M50 78 V122" stroke={shade(top, -0.3)} strokeWidth="0.8" />
-          </>
-        )}
-        {look.gender === "woman" && !hijab && <path d="M43 68 C45 76 55 76 57 68 Z" fill={url("neck")} />}
+        <path d="M30 78 C29 83 28.4 87 28 90" stroke="#fff" strokeOpacity="0.25" strokeWidth="2" fill="none" strokeLinecap="round" />
+        <path d="M24 90.6 C27 92.6 30.4 93 33.2 92.2 M76 90.6 C73 92.6 69.6 93 66.8 92.2" stroke={shade(top, -0.22)} strokeWidth="0.9" fill="none" />
         {look.gender === "nonbinary" && (
           <>
-            <path d="M38 68.5 C41 77 59 77 62 68.5 C57 73 43 73 38 68.5 Z" fill={shade(top, -0.22)} />
-            <path d="M46 75 L45 88 M54 75 L55 88" stroke="#ffffff" strokeWidth="1.5" strokeLinecap="round" />
-            <path d="M38 106 H62 L61 120 H39 Z" fill={shade(top, -0.12)} />
+            <path d="M46 70 L45 84 M54 70 L55 84" stroke="#ffffff" strokeWidth="1.5" strokeLinecap="round" />
+            <path d="M38.4 102 H61.6 L61 114 H39 Z" fill={shade(top, -0.1)} />
           </>
         )}
-        <rect x={wide ? 33 : 33} y="119" width={wide ? 34 : 34} height="5" rx="2" fill={shade(pants, -0.3)} />
+
         {has("apron") && (
           <g>
-            <path d="M39 78 H61 L63 126 H37 Z" fill="#fffaf2" />
-            <rect x="44" y="96" width="12" height="8" rx="2" fill="#e5533d" opacity="0.85" />
-            <path d="M39 78 L44 68 M61 78 L56 68" stroke="#fffaf2" strokeWidth="2.2" strokeLinecap="round" />
-          </g>
-        )}
-        {has("shopping") && (
-          <g>
-            <path d={`M${shoulderL + 3} 70 L${shoulderL - 9} 106`} stroke="#8a5a2b" strokeWidth="2" />
-            <ItemArt id="shopping" x={shoulderL - 22} y={98} size={24} />
+            <path d="M38.6 77 L44 66.4 M61.4 77 L56 66.4" stroke="#eef1f5" strokeWidth="2.2" strokeLinecap="round" />
+            <path d="M34.6 97 C30.4 97 28.6 100 30 102.6 M65.4 97 C69.6 97 71.4 100 70 102.6" stroke="#e1e6ed" strokeWidth="1.6" fill="none" strokeLinecap="round" />
+            <path d="M38.6 76 H61.4 L62 92 C64.6 93.4 65.6 95.6 65.6 98 L64.8 128 C64.7 129.6 63.6 130.6 62 130.6 H38 C36.4 130.6 35.3 129.6 35.2 128 L34.4 98 C34.4 95.6 35.4 93.4 38 92 Z" fill={url("apron")} />
+            <rect x="44" y="104" width="12" height="9" rx="1.6" fill="none" stroke="#c3c9d3" strokeDasharray="1.2 1" strokeWidth="0.8" />
+            <ellipse cx="39.6" cy="100" rx="1.3" ry="6" fill="#fff" opacity="0.9" />
           </g>
         )}
 
         {neck}
         {neckItems}
+        {chest.length > 0 && (
+          <>
+            <path d={chest.length === 2 ? "M42 68 L40 90 M58 68 L60 90" : "M43 68 L48 90 M57 68 L52 90"} stroke="#3a3a42" strokeWidth="1.1" fill="none" />
+            {chest.map((item, i) => (
+              <ItemArt key={item} id={item} x={chest.length === 2 ? 30 + i * 22 : 39} y={84} size={chest.length === 2 ? 18 : 22} />
+            ))}
+          </>
+        )}
         <g transform={HEAD_SCALE}>{head}</g>
 
-        {/* In hand, and on the ground */}
-        {has("diya") && <ItemArt id="diya" x={shoulderL - 18} y={108} size={22} />}
-        {has("book") && <ItemArt id="book" x={shoulderR - 2} y={106} size={20} />}
-        {has("tent") && <ItemArt id="tent" x={-22} y={150} size={46} />}
-        {has("cycle") && <ItemArt id="cycle" x={has("surfboard") ? 86 : 72} y={164} size={34} />}
+        {tote && (
+          <g>
+            <path d="M35 69 L21 112 M38 69 L30.6 112" stroke="#d24a16" strokeWidth="1.8" strokeLinecap="round" />
+            <ItemArt id="shopping" x={9} y={104} size={34} />
+          </g>
+        )}
+        {inHand.map((item, i) => {
+          const [hx, hy] = handSlots[i]!;
+          return <ItemArt key={item} id={item} x={hx - 11} y={hy - 15} size={22} />;
+        })}
+        {onGround.map((item) => (
+          <ItemArt key={item} id={item} x={70} y={168} size={22} />
+        ))}
       </svg>
     );
   }
 
   /* ---------- Bust ---------- */
 
-  const body =
-    look.gender === "man"
-      ? "M15 104 C15 85 26 72.5 41 70.5 L59 70.5 C74 72.5 85 85 85 104 Z"
-      : look.gender === "woman"
-        ? "M20 104 C20 86 30 74 42 72 L58 72 C70 74 80 86 80 104 Z"
-        : "M17 104 C17 85 28 72.5 41 70.5 L59 70.5 C72 72.5 83 85 83 104 Z";
   const back = (["surfboard", "yogamat", "tent"] as const).filter(has) as ItemId[];
   if (has("cycle") && !helmet) back.push("cycle");
   const front = (["shopping", "boots", "diya", "book"] as const).filter(has) as ItemId[];
   const BACK_SLOTS: Array<[number, number]> = [[-6, 40], [74, 40], [-8, 62]];
   const FRONT_SLOTS: Array<[number, number]> = [[12, 80], [64, 80], [38, 86]];
 
+  const sheet = sheetFor(look);
+  const S = 112 / sheet.size; // sheet px → avatar units (the picture is 112 units wide)
+  const iw = sheet.size * S;
+  const ix = 50 - sheet.faceCx * S;
+  const iy = 2;
+  const mouthY = iy + sheet.mouth * S;
+  const k = Math.max(0.8, (sheet.faceW * S - 8) / 41);
+  /** Maps drawn-head coordinates (mouth at 50,57.6) onto the sheet face, so hats and extras sit right. */
+  const onFace = `translate(50 ${mouthY.toFixed(2)}) scale(${k.toFixed(3)}) translate(-50 -57.6)`;
+  /** Facial hair drawn around the sheet's own mouth (origin = mouth centre). */
+  const atMouth = `translate(50 ${mouthY.toFixed(2)}) scale(${(k * 0.98).toFixed(3)})`;
+  const moustache = <path d="M-7 -2.4 C-5 -5.2 -1.6 -5 0 -3.8 C1.6 -5 5 -5.2 7 -2.4 C4.6 -3.1 2.4 -2.5 0 -2.9 C-2.4 -2.5 -4.6 -3.1 -7 -2.4 Z" fill={url("hair")} />;
+  const sheetFacialHair =
+    facialHair === "none" ? null : (
+      <g transform={atMouth}>
+        {facialHair === "stubble" && <path d="M-17 -7 C-16 6 -8 12.5 0 12.5 C8 12.5 16 6 17 -7 C14 2 8 5.6 0 5.6 C-8 5.6 -14 2 -17 -7 Z" fill={url("hair")} opacity="0.28" />}
+        {facialHair === "beard" && <path d="M-18.4 -10 C-18.4 8 -8.4 14.6 0 14.6 C8.4 14.6 18.4 8 18.4 -10 C16.4 -2 11.4 3.4 6.4 3 C3 2.6 -3 2.6 -6.4 3 C-11.4 3.4 -16.4 -2 -18.4 -10 Z" fill={url("hair")} />}
+        {(facialHair === "moustache" || facialHair === "beard") && moustache}
+      </g>
+    );
+  const rgb = (hex: string) => [1, 3, 5].map((i) => parseInt(hex.slice(i, i + 2), 16));
+  const slope = (target: string, base: readonly number[]) => rgb(target).map((c, i) => (c / Math.max(1, base[i]!)).toFixed(3));
+  const hairSlope = sheet.hair ? slope(hair, sheet.hair) : null;
+  const picture = (extra?: { mask: string; filter: string }) => (
+    <image href={sheet.base} x={ix} y={iy} width={iw} height={iw} mask={extra?.mask} filter={extra?.filter} />
+  );
+
   return (
     <svg width={size} height={size} viewBox="0 0 100 100" aria-hidden style={svgStyle}>
       {defs}
+      <defs>
+        <clipPath id={id("frame")}>
+          <path d={BLOB} />
+          <rect x="-40" y="-40" width="180" height="96" />
+        </clipPath>
+        {sheet.hairMask && hairSlope && (
+          <>
+            <mask id={id("hairMask")} maskUnits="userSpaceOnUse" x={ix} y={iy} width={iw} height={iw}>
+              <image href={sheet.hairMask} x={ix} y={iy} width={iw} height={iw} />
+            </mask>
+            <filter id={id("hairTone")} colorInterpolationFilters="sRGB">
+              <feComponentTransfer>
+                <feFuncR type="linear" slope={hairSlope[0]} />
+                <feFuncG type="linear" slope={hairSlope[1]} />
+                <feFuncB type="linear" slope={hairSlope[2]} />
+              </feComponentTransfer>
+            </filter>
+          </>
+        )}
+      </defs>
       <path d={BLOB} fill={blob} />
       {back.slice(0, BACK_SLOTS.length).map((item, i) => {
         const [x, y] = BACK_SLOTS[i]!;
         return <ItemArt key={item} id={item} x={x} y={y} size={32} />;
       })}
-      {hairBack}
-      <g clipPath={url("blob")}>
-        <path d={body} fill={url("top")} />
-        {look.gender === "man" && (
-          <>
-            <path d="M42 70.5 L50 80 L58 70.5 Z" fill={url("neck")} />
-            <path d="M40 71 L45 69.5 L50 78 L45.5 84 Z" fill="#ffffff" />
-            <path d="M60 71 L55 69.5 L50 78 L54.5 84 Z" fill="#ececf1" />
-          </>
-        )}
-        {look.gender === "woman" && !hijab && <path d="M42.5 72 C44.5 80 55.5 80 57.5 72 Z" fill={url("neck")} />}
-        {look.gender === "nonbinary" && (
-          <>
-            <path d="M37 71.5 C40 80 60 80 63 71.5 C58 76 42 76 37 71.5 Z" fill={shade(top, -0.22)} />
-            <path d="M45.5 78 L44.5 91 M54.5 78 L55.5 91" stroke="#ffffff" strokeWidth="1.5" strokeLinecap="round" />
-          </>
-        )}
+      <g clipPath={url("frame")}>
+        {picture()}
+        {sheet.hairMask && hairSlope && picture({ mask: url("hairMask"), filter: url("hairTone") })}
         {has("apron") && (
-          <g>
-            <path d="M40 78 H60 L62 104 H38 Z" fill="#fffaf2" />
-            <rect x="44" y="86" width="12" height="6" rx="1.5" fill="#e5533d" opacity="0.85" />
-            <path d="M40 78 L44 70 M60 78 L56 70" stroke="#fffaf2" strokeWidth="2" strokeLinecap="round" />
+          <g transform={onFace}>
+            <path d="M40 78 H60 L62 104 H38 Z" fill={url("apron")} />
+            <rect x="44" y="86" width="12" height="7" rx="1.5" fill="none" stroke="#c3c9d3" strokeDasharray="1.2 1" strokeWidth="0.8" />
+            <path d="M40 78 L44 70 M60 78 L56 70" stroke="#eef1f5" strokeWidth="2" strokeLinecap="round" />
           </g>
         )}
       </g>
-      {neck}
-      {neckItems}
-      {head}
+      {sheetFacialHair}
+      <g transform={onFace}>
+        {neckItems}
+        {headwear}
+        {extrasArt}
+      </g>
       {front.slice(0, FRONT_SLOTS.length).map((item, i) => {
         const [x, y] = FRONT_SLOTS[i]!;
         return <ItemArt key={item} id={item} x={x} y={y} size={24} />;

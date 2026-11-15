@@ -111,20 +111,36 @@
   gap: var(--space-2);
 }
 
+.daysHead {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+
+.selectAll {
+  flex: none;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink);
+}
+
 .day,
-.dayOut {
+.dayIn {
   height: 40px;
   border: 1px solid var(--line-2);
   border-radius: var(--r-btn);
   background: var(--surface);
   font-size: 12px;
   font-weight: 600;
-  color: var(--ink);
+  color: var(--ink-3);
+  transition: background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-.dayOut {
-  border-color: var(--line);
+/* A day you can make: the selected state (thin ink line, soft lift). No strike-through anywhere. */
+.dayIn {
+  border-color: var(--ink);
   background: #f3f3f3;
-  color: var(--ink-3);
-  text-decoration: line-through;
+  color: var(--ink);
+  box-shadow: var(--sh-sel);
 }

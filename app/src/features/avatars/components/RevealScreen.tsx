@@ -8,6 +8,7 @@ import { duration, ease } from "@/styles/motion";
 import { useReadiness } from "../hooks/useReadiness";
 import { selectMembers, selectOverlaps } from "../selectors";
 import { AvatarFigure } from "./AvatarFigure";
+import { ItemIcon } from "./ItemIcon";
 import { OverlapList } from "./OverlapList";
 import styles from "./RevealScreen.module.css";
 
@@ -62,12 +63,19 @@ export function RevealScreen() {
               transition={{ duration: duration.reveal, ease: ease.inOut }}
             >
               <div className={styles.front}>
-                <AvatarFigure name={card.name} avatar={card.avatar} size={64} faded={card.faded} badges={false} />
+                <div className={styles.portrait}>
+                  <AvatarFigure name={card.name} avatar={{ ...card.avatar, items: [] }} size={64} faded={card.faded} badges={false} />
+                  {card.avatar.lockedItemId && (
+                    <span className={styles.locked}>
+                      <ItemIcon id={card.avatar.lockedItemId} size={30} />
+                    </span>
+                  )}
+                </div>
                 <span className={styles.name}>{card.faded ? "Default picks" : card.name}</span>
                 {card.avatar.lockedItemId && <span className={styles.must}>Must-have: {getItemInfo(card.avatar.lockedItemId).label}</span>}
               </div>
               <div className={styles.back} aria-hidden>
-                <AgentMark size={18} label="" />
+                <AgentMark size={30} label="" color="#ffffff" />
               </div>
             </motion.div>
           </li>

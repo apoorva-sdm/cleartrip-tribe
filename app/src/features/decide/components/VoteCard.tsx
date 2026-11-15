@@ -1,3 +1,4 @@
+import { PlacePhoto } from "@/ui";
 import { Money, type RankedPlace } from "@/domain";
 import { BeenThereLink } from "@/features/match";
 import styles from "./VoteCard.module.css";
@@ -19,6 +20,7 @@ export function VoteCard({ ranked, nights, loves, vetoed, canAddLove, onLove, on
   const skip = place.notes.find((n) => n.kind === "skip");
   return (
     <article className={[styles.card, vetoed && styles.vetoed].filter(Boolean).join(" ")}>
+      <PlacePhoto placeId={place.id} name={place.name} className={styles.photo} />
       <header className={styles.head}>
         <div>
           <h3 className={styles.name}>{place.name}</h3>

@@ -18,8 +18,8 @@
 }
 
 .on {
-  border: 1.5px solid var(--ink);
-  padding: calc(var(--space-3) - 0.5px);
+  border: 1px solid var(--ink);
+  box-shadow: var(--sh-sel);
 }
 
 .check {

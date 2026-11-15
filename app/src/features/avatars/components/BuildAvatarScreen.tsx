@@ -16,11 +16,13 @@ import {
   type ItemId,
 } from "@/domain";
 import { Button, ChoiceChip, Field, PhoneShell } from "@/ui";
-import { duration, ease } from "@/styles/motion";
+import { duration, ease, spring } from "@/styles/motion";
 import { saveMyAvatar } from "../slice";
 import { selectSaveStatus } from "../selectors";
 import { AvatarFigure } from "./AvatarFigure";
+import { ItemIcon } from "./ItemIcon";
 import { ItemTile } from "./ItemTile";
+import { LockIcon } from "./LockIcon";
 import { LockPicker } from "./LockPicker";
 import { LookPicker } from "./LookPicker";
 import styles from "./BuildAvatarScreen.module.css";
@@ -92,10 +94,32 @@ export function BuildAvatarScreen() {
   return (
     <PhoneShell stage="Avatars" backTo="/tribe/share" footer={footer}>
       <div className={styles.preview}>
-        {tab === "picks" ? (
-          <AvatarFigure name={name || "You"} avatar={{ ...avatar, look }} size={120} badges={false} variant="full" />
-        ) : (
-          <AvatarFigure name={name || "You"} avatar={{ ...avatar, look }} size={150} badges={false} />
+        <AvatarFigure name={name || "You"} avatar={{ ...avatar, look, items: tab === "picks" ? [] : avatar.items }} size={150} badges={false} />
+        {tab === "picks" && (
+          <ul className={styles.slots} aria-label={`Your picks, ${avatar.items.length} of ${LOADOUT_SIZE}`}>
+            {Array.from({ length: LOADOUT_SIZE }, (_, i) => {
+              const item = avatar.items[i];
+              const locked = item !== undefined && item === avatar.lockedItemId;
+              return (
+                <li key={item ?? `empty-${i}`} className={item ? (locked ? styles.slotLocked : styles.slotOn) : styles.slot}>
+                  {item && (
+                    <motion.span
+                      className={styles.slotArt}
+                      initial={{ scale: 0.6, opacity: 0 }}
+                      animate={{ scale: 1, opacity: 1, transition: spring.pop }}
+                    >
+                      <ItemIcon id={item} size={30} />
+                    </motion.span>
+                  )}
+                  {locked && (
+                    <span className={styles.slotLock}>
+                      <LockIcon size={9} />
+                    </span>
+                  )}
+                </li>
+              );
+            })}
+          </ul>
         )}
         <div className={styles.captionSlot} aria-live="polite">
           <AnimatePresence>

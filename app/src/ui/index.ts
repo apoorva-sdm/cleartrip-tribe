@@ -13,3 +13,4 @@ export { ToggleRow } from "./ToggleRow";
 export { Sheet } from "./Sheet";
 export { AvatarFace, SKIN_SWATCH, HAIR_SWATCH } from "./AvatarFace";
 export { ItemArt } from "./ItemArt";
+export { PlacePhoto, placePhoto } from "./PlacePhoto";

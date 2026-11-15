@@ -8,6 +8,8 @@
   --line-2: #e0e0e0;
   --surface: #ffffff;
   --tint: #f7faff;
+  /* Selected (clicked) state: a thin ink line and a soft lift. */
+  --sh-sel: 0 2px 8px rgba(26, 26, 26, 0.1);
   --pill: #ecf3ff;
   --avatar-bg: #dce5fc;
   --skeleton: #eef1f6;

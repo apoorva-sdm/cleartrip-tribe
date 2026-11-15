@@ -131,8 +131,10 @@
 }
 
 .vetoOn {
+  border-width: 1px;
   border-color: var(--ink);
   background: #f3f3f3;
+  box-shadow: var(--sh-sel);
 }
 
 .over {
@@ -145,4 +147,14 @@
   font-size: 11px;
   font-weight: 600;
   line-height: 16px;
+}
+
+/* Place photo as a full-bleed banner across the top of the card. */
+.photo {
+  display: block;
+  width: calc(100% + 2 * var(--space-4));
+  height: 132px;
+  margin: calc(-1 * var(--space-4)) calc(-1 * var(--space-4)) var(--space-3);
+  border-radius: var(--r-card) var(--r-card) 0 0;
+  object-fit: cover;
 }

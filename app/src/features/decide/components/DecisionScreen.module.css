@@ -75,11 +75,16 @@
 
 .locked {
   margin-top: var(--space-6);
-  padding: var(--space-6) var(--space-4);
-  border: 1.5px solid transparent;
-  border-radius: var(--r-card);
-  background: linear-gradient(var(--surface), var(--surface)) padding-box, var(--tribe-grad) border-box;
   text-align: center;
+}
+
+/* Gradient outline only around the white half; the photo sits on top without it. */
+.lockBody {
+  padding: var(--space-4) var(--space-4) var(--space-6);
+  border: 1.5px solid transparent;
+  border-top: 0;
+  border-radius: 0 0 var(--r-card) var(--r-card);
+  background: linear-gradient(var(--surface), var(--surface)) padding-box, var(--tribe-grad) border-box;
 }
 
 .lockTag {
@@ -111,4 +116,13 @@
   font-weight: 500;
   line-height: 16px;
   color: var(--ink-3);
+}
+
+/* The locked place's photo fills the top of the card. */
+.lockPhoto {
+  display: block;
+  width: 100%;
+  height: 180px;
+  border-radius: var(--r-card) var(--r-card) 0 0;
+  object-fit: cover;
 }

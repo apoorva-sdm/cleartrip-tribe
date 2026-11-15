@@ -55,7 +55,7 @@ export function TripScreen() {
   };
 
   return (
-    <PhoneShell stage="Trip" backTo="/tribe/trip/ready" footer={<Button block onClick={() => navigate("/tribe/trip/split")}>Trip over? Split costs 💸</Button>}>
+    <PhoneShell stage="Trip" backTo="/tribe/trip/ready" footer={<Button block onClick={() => navigate("/tribe/trip/split")}>Trip over? Split costs</Button>}>
       <ScreenTitle title={`You're in ${locked.place.name}!`}>If plans change, Tribe works out a new plan and your tribe agrees.</ScreenTitle>
 
       <div className={styles.tabs} role="tablist">

@@ -40,9 +40,28 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1.5px solid transparent;
-  background: linear-gradient(var(--tint), var(--tint)) padding-box, var(--tribe-grad) border-box;
+  background: linear-gradient(135deg, #ee5fc9 0%, #f58aa6 50%, #fbae7c 100%);
+  box-shadow: var(--sh-sel);
   transform: rotateY(180deg);
+}
+
+.portrait {
+  position: relative;
+}
+
+/* The must-have, drawn big enough to read: a white disc tucked at the avatar's side. */
+.locked {
+  position: absolute;
+  right: -18px;
+  bottom: -4px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--surface);
+  box-shadow: var(--sh-sel);
 }
 
 .name {

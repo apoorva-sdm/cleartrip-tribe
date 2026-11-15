@@ -3,8 +3,8 @@ import bus from "@/assets/photos/bus.jpg";
 import flight from "@/assets/photos/flight.jpg";
 import train from "@/assets/photos/train.jpg";
 import hostel from "@/assets/photos/stay-hostel.jpg";
-import hotel from "@/assets/photos/stay-hotel.jpg";
-import villa from "@/assets/photos/stay-villa.webp";
+import boutique from "@/assets/photos/stay-boutique.jpg";
+import villa from "@/assets/photos/stay-villa.jpg";
 import styles from "./Pictures.module.css";
 
 /** Photos for travel and stays (reference images provided for the prototype). */
@@ -23,8 +23,8 @@ export type StayKind = 0 | 1 | 2;
 
 const STAYS: Record<StayKind, { src: string; alt: string }> = {
   0: { src: hostel, alt: "Bunk-bed rooms" },
-  1: { src: villa, alt: "Villa with a pool and gardens" },
-  2: { src: hotel, alt: "Hotel room with two beds" },
+  1: { src: villa, alt: "Group villa with a private pool" },
+  2: { src: boutique, alt: "Boutique stay with a pool and gardens" },
 };
 
 /** 0 = backpacker rooms, 1 = group villa, 2 = boutique hotel. */

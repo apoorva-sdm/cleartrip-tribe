@@ -2,7 +2,7 @@ import { motion } from "motion/react";
 import { Navigate, useNavigate } from "react-router-dom";
 import { useAppSelector } from "@/app/hooks";
 import { formatDay } from "@/domain";
-import { AgentMark, Button, PhoneShell, ScreenTitle } from "@/ui";
+import { AgentMark, Button, PhoneShell, ScreenTitle, PlacePhoto } from "@/ui";
 import { duration, ease, spring } from "@/styles/motion";
 import { selectDecision, selectLocked, selectShortlist } from "../selectors";
 import styles from "./DecisionScreen.module.css";
@@ -63,6 +63,8 @@ export function DecisionScreen() {
         initial={{ opacity: 0, scale: 0.96 }}
         animate={{ opacity: 1, scale: 1, transition: { delay: 0.8, ...spring.soft } }}
       >
+        <PlacePhoto placeId={locked.place.id} name={locked.place.name} className={styles.lockPhoto} />
+        <div className={styles.lockBody}>
         <p className={styles.lockTag}>
           <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.3" aria-hidden>
             <rect x="2" y="5.5" width="8" height="5.5" rx="1.2" />
@@ -78,6 +80,7 @@ export function DecisionScreen() {
           {last && last !== first && ` – ${formatDay(last)}`} · {locked.nights} {locked.nights === 1 ? "night" : "nights"}
         </p>
         <p className={styles.lockNote}>These are the days everyone can make.</p>
+        </div>
       </motion.section>
     </PhoneShell>
   );

@@ -71,3 +71,58 @@
   line-height: 16px;
   color: var(--red);
 }
+
+/* Trip picks: five slots under the avatar, filled in the order you pick. */
+.slots {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: var(--space-3);
+  margin-top: var(--space-3);
+}
+
+.slot,
+.slotOn,
+.slotLocked {
+  position: relative;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.slot {
+  border: 1px dashed var(--line-2);
+  background: var(--tint);
+}
+
+.slotOn,
+.slotLocked {
+  border: 1px solid var(--line);
+  background: var(--surface);
+  box-shadow: var(--sh-sel);
+}
+
+.slotLocked {
+  border-color: var(--ink);
+}
+
+.slotArt {
+  display: flex;
+}
+
+.slotLock {
+  position: absolute;
+  right: -4px;
+  bottom: -4px;
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--ink);
+  color: #fff;
+}

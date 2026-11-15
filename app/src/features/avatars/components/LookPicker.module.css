@@ -33,7 +33,7 @@
 }
 
 .swatchOn {
-  box-shadow: 0 0 0 2px var(--ink);
+  box-shadow: 0 0 0 1px var(--ink), var(--sh-sel);
 }
 
 .hairGrid {
@@ -59,7 +59,8 @@
 }
 
 .hairOn {
-  border: 1.5px solid var(--ink);
-  padding: 5.5px 0;
+  border: 1px solid var(--ink);
+  padding: 6px 0;
+  box-shadow: var(--sh-sel);
   color: var(--ink);
 }

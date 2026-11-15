@@ -337,3 +337,9 @@
   font-weight: 600;
   text-decoration: none;
 }
+
+/* In the day plan, the button sits on its own line under the activity name. */
+.what .bookNow {
+  display: block;
+  margin-top: var(--space-2);
+}

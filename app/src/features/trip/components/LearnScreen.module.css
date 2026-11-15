@@ -33,12 +33,13 @@
   align-items: center;
   gap: 2px;
   border-radius: var(--r-card);
-  border: 1.5px solid transparent;
+  border: 1px solid transparent;
   transition: transform 0.15s ease, background-color 0.2s ease;
 }
 
 .on {
-  border-color: var(--ink);
+  border: 1px solid var(--ink);
+  box-shadow: var(--sh-sel);
   background: #fff8e6;
 }
 

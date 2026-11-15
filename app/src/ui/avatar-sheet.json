@@ -1,0 +1,334 @@
+{
+ "women": {
+  "short": {
+   "size": 200,
+   "faceCx": 100,
+   "chin": 103,
+   "mouth": 107,
+   "faceW": 131,
+   "skin": [
+    236,
+    180,
+    143
+   ],
+   "hair": [
+    68,
+    47,
+    39
+   ]
+  },
+  "sidepart": {
+   "size": 200,
+   "faceCx": 100,
+   "chin": 102,
+   "mouth": 103,
+   "faceW": 127,
+   "skin": [
+    232,
+    176,
+    140
+   ],
+   "hair": [
+    69,
+    48,
+    40
+   ]
+  },
+  "curly": {
+   "size": 200,
+   "faceCx": 100,
+   "chin": 103,
+   "mouth": 106,
+   "faceW": 153,
+   "skin": [
+    234,
+    179,
+    141
+   ],
+   "hair": [
+    65,
+    44,
+    36
+   ]
+  },
+  "bun": {
+   "size": 200,
+   "faceCx": 100,
+   "chin": 123,
+   "mouth": 123,
+   "faceW": 105,
+   "skin": [
+    239,
+    185,
+    148
+   ],
+   "hair": [
+    70,
+    52,
+    44
+   ]
+  },
+  "braid": {
+   "size": 200,
+   "faceCx": 100,
+   "chin": 101,
+   "mouth": 104,
+   "faceW": 107,
+   "skin": [
+    239,
+    187,
+    149
+   ],
+   "hair": [
+    68,
+    49,
+    42
+   ]
+  },
+  "bob": {
+   "size": 200,
+   "faceCx": 100,
+   "chin": 100,
+   "mouth": 104,
+   "faceW": 135,
+   "skin": [
+    236,
+    180,
+    143
+   ],
+   "hair": [
+    67,
+    48,
+    40
+   ]
+  },
+  "long": {
+   "size": 200,
+   "faceCx": 100,
+   "chin": 102,
+   "mouth": 105,
+   "faceW": 115,
+   "skin": [
+    235,
+    180,
+    143
+   ],
+   "hair": [
+    70,
+    50,
+    41
+   ]
+  },
+  "buzz": {
+   "size": 200,
+   "faceCx": 100,
+   "chin": 97,
+   "mouth": 101,
+   "faceW": 103,
+   "skin": [
+    244,
+    190,
+    152
+   ],
+   "hair": [
+    69,
+    53,
+    46
+   ]
+  },
+  "turban": {
+   "size": 200,
+   "faceCx": 100,
+   "chin": 112,
+   "mouth": 111,
+   "faceW": 103,
+   "skin": [
+    243,
+    188,
+    146
+   ],
+   "hair": null
+  },
+  "hijab": {
+   "size": 200,
+   "faceCx": 100,
+   "chin": 98,
+   "mouth": 99,
+   "faceW": 99,
+   "skin": [
+    245,
+    189,
+    151
+   ],
+   "hair": null
+  }
+ },
+ "men": {
+  "turban": {
+   "size": 200,
+   "faceCx": 100,
+   "chin": 112,
+   "mouth": 112,
+   "faceW": 109,
+   "skin": [
+    240,
+    188,
+    144
+   ],
+   "hair": null
+  },
+  "short": {
+   "size": 200,
+   "faceCx": 100,
+   "chin": 104,
+   "mouth": 106,
+   "faceW": 101,
+   "skin": [
+    239,
+    187,
+    146
+   ],
+   "hair": [
+    57,
+    47,
+    42
+   ]
+  },
+  "sidepart": {
+   "size": 200,
+   "faceCx": 100,
+   "chin": 100,
+   "mouth": 103,
+   "faceW": 101,
+   "skin": [
+    235,
+    180,
+    139
+   ],
+   "hair": [
+    58,
+    47,
+    42
+   ]
+  },
+  "curly": {
+   "size": 200,
+   "faceCx": 100,
+   "chin": 110,
+   "mouth": 112,
+   "faceW": 115,
+   "skin": [
+    235,
+    181,
+    140
+   ],
+   "hair": [
+    56,
+    44,
+    38
+   ]
+  },
+  "bun": {
+   "size": 200,
+   "faceCx": 100,
+   "chin": 120,
+   "mouth": 119,
+   "faceW": 101,
+   "skin": [
+    240,
+    186,
+    146
+   ],
+   "hair": [
+    61,
+    50,
+    43
+   ]
+  },
+  "braid": {
+   "size": 200,
+   "faceCx": 100,
+   "chin": 102,
+   "mouth": 104,
+   "faceW": 101,
+   "skin": [
+    240,
+    187,
+    146
+   ],
+   "hair": [
+    56,
+    47,
+    42
+   ]
+  },
+  "bob": {
+   "size": 200,
+   "faceCx": 100,
+   "chin": 102,
+   "mouth": 103,
+   "faceW": 123,
+   "skin": [
+    230,
+    175,
+    134
+   ],
+   "hair": [
+    60,
+    47,
+    40
+   ]
+  },
+  "long": {
+   "size": 200,
+   "faceCx": 100,
+   "chin": 101,
+   "mouth": 104,
+   "faceW": 117,
+   "skin": [
+    231,
+    175,
+    135
+   ],
+   "hair": [
+    59,
+    45,
+    39
+   ]
+  },
+  "buzz": {
+   "size": 200,
+   "faceCx": 100,
+   "chin": 93,
+   "mouth": 94,
+   "faceW": 101,
+   "skin": [
+    241,
+    189,
+    148
+   ],
+   "hair": [
+    56,
+    50,
+    46
+   ]
+  },
+  "fade": {
+   "size": 200,
+   "faceCx": 100,
+   "chin": 106,
+   "mouth": 107,
+   "faceW": 101,
+   "skin": [
+    239,
+    186,
+    145
+   ],
+   "hair": [
+    59,
+    49,
+    43
+   ]
+  }
+ }
+}

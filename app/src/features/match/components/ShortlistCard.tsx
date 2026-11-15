@@ -1,7 +1,7 @@
 import { motion } from "motion/react";
 import { Money, getItemInfo, type RankedPlace } from "@/domain";
 import { ItemIcon } from "@/features/avatars";
-import { AgentMark } from "@/ui";
+import { AgentMark, PlacePhoto } from "@/ui";
 import { duration, ease } from "@/styles/motion";
 import { BeenThereLink } from "./BeenThereLink";
 import styles from "./ShortlistCard.module.css";
@@ -23,6 +23,7 @@ export function ShortlistCard({ ranked, rank, nights }: ShortlistCardProps) {
       initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0, transition: { delay: 0.08 * rank, duration: duration.base, ease: ease.out } }}
     >
+      <PlacePhoto placeId={place.id} name={place.name} className={styles.photo} />
       <header className={styles.head}>
         <span className={styles.rank}>{rank}</span>
         <div className={styles.name}>

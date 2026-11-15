@@ -57,11 +57,18 @@ export type ItemId = (typeof AVATAR_ITEM_IDS)[number];
 export const GENDERS = ["woman", "man", "nonbinary"] as const;
 export type Gender = (typeof GENDERS)[number];
 
+/** Hairstyles offered per gender, after the two character sheets (women's has a hijab, men's a fade). */
+export function hairStylesFor(gender: Gender): readonly HairStyle[] {
+  if (gender === "woman") return HAIR_STYLES.filter((h) => h !== "fade");
+  if (gender === "man") return HAIR_STYLES.filter((h) => h !== "hijab");
+  return HAIR_STYLES;
+}
+
 /** Six tones across the Indian range, fair to deep. */
 export const SKIN_TONES = ["fair", "wheatish", "honey", "dusky", "brown", "deep"] as const;
 export type SkinTone = (typeof SKIN_TONES)[number];
 
-export const HAIR_STYLES = ["short", "sidepart", "curly", "bun", "braid", "bob", "long", "buzz", "turban", "hijab"] as const;
+export const HAIR_STYLES = ["short", "sidepart", "curly", "bun", "braid", "bob", "long", "buzz", "fade", "turban", "hijab"] as const;
 export type HairStyle = (typeof HAIR_STYLES)[number];
 
 export const HAIR_COLOURS = ["black", "darkbrown", "brown", "henna", "grey"] as const;

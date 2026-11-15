@@ -61,7 +61,7 @@ export function MyTribeScreen() {
                   </ul>
                 )}
 
-                <Button block className={styles.cta} onClick={() => navigate(current.resumeTo)}>
+                <Button block variant={current.summary.done ? "secondary" : "primary"} className={styles.cta} onClick={() => navigate(current.resumeTo)}>
                   {current.summary.done ? "See the trip" : "Continue"}
                 </Button>
               </article>

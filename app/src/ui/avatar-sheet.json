@@ -4,7 +4,7 @@
    "size": 200,
    "faceCx": 100,
    "chin": 103,
-   "mouth": 107,
+   "mouth": 105.1,
    "faceW": 131,
    "skin": [
     236,
@@ -15,13 +15,17 @@
     68,
     47,
     39
-   ]
+   ],
+   "eyeL": 81.2,
+   "eyeR": 118.2,
+   "eyeY": 78.5,
+   "eyeCx": 99.7
   },
   "sidepart": {
    "size": 200,
    "faceCx": 100,
    "chin": 102,
-   "mouth": 103,
+   "mouth": 102.9,
    "faceW": 127,
    "skin": [
     232,
@@ -32,13 +36,17 @@
     69,
     48,
     40
-   ]
+   ],
+   "eyeL": 83,
+   "eyeR": 118.9,
+   "eyeY": 77.1,
+   "eyeCx": 101
   },
   "curly": {
    "size": 200,
    "faceCx": 100,
    "chin": 103,
-   "mouth": 106,
+   "mouth": 104.6,
    "faceW": 153,
    "skin": [
     234,
@@ -49,13 +57,17 @@
     65,
     44,
     36
-   ]
+   ],
+   "eyeL": 83.2,
+   "eyeR": 118.4,
+   "eyeY": 78.4,
+   "eyeCx": 100.8
   },
   "bun": {
    "size": 200,
    "faceCx": 100,
    "chin": 123,
-   "mouth": 123,
+   "mouth": 124.4,
    "faceW": 105,
    "skin": [
     239,
@@ -66,13 +78,17 @@
     70,
     52,
     44
-   ]
+   ],
+   "eyeL": 82.4,
+   "eyeR": 117.9,
+   "eyeY": 98.6,
+   "eyeCx": 100.1
   },
   "braid": {
    "size": 200,
    "faceCx": 100,
    "chin": 101,
-   "mouth": 104,
+   "mouth": 102.3,
    "faceW": 107,
    "skin": [
     239,
@@ -83,13 +99,17 @@
     68,
     49,
     42
-   ]
+   ],
+   "eyeL": 82.4,
+   "eyeR": 118,
+   "eyeY": 76.2,
+   "eyeCx": 100.2
   },
   "bob": {
    "size": 200,
    "faceCx": 100,
    "chin": 100,
-   "mouth": 104,
+   "mouth": 101.3,
    "faceW": 135,
    "skin": [
     236,
@@ -100,13 +120,17 @@
     67,
     48,
     40
-   ]
+   ],
+   "eyeL": 81.3,
+   "eyeR": 116.8,
+   "eyeY": 76.2,
+   "eyeCx": 99
   },
   "long": {
    "size": 200,
    "faceCx": 100,
    "chin": 102,
-   "mouth": 105,
+   "mouth": 103,
    "faceW": 115,
    "skin": [
     235,
@@ -117,13 +141,17 @@
     70,
     50,
     41
-   ]
+   ],
+   "eyeL": 81.4,
+   "eyeR": 116.3,
+   "eyeY": 77.6,
+   "eyeCx": 98.8
   },
   "buzz": {
    "size": 200,
    "faceCx": 100,
    "chin": 97,
-   "mouth": 101,
+   "mouth": 98.9,
    "faceW": 103,
    "skin": [
     244,
@@ -134,33 +162,45 @@
     69,
     53,
     46
-   ]
+   ],
+   "eyeL": 82.1,
+   "eyeR": 117.4,
+   "eyeY": 72.8,
+   "eyeCx": 99.7
   },
   "turban": {
    "size": 200,
    "faceCx": 100,
    "chin": 112,
-   "mouth": 111,
+   "mouth": 109.1,
    "faceW": 103,
    "skin": [
     243,
     188,
     146
    ],
-   "hair": null
+   "hair": null,
+   "eyeL": 82,
+   "eyeR": 116.5,
+   "eyeY": 84,
+   "eyeCx": 99.3
   },
   "hijab": {
    "size": 200,
    "faceCx": 100,
    "chin": 98,
-   "mouth": 99,
+   "mouth": 97.8,
    "faceW": 99,
    "skin": [
     245,
     189,
     151
    ],
-   "hair": null
+   "hair": null,
+   "eyeL": 82.4,
+   "eyeR": 116.9,
+   "eyeY": 72.1,
+   "eyeCx": 99.7
   }
  },
  "men": {
@@ -168,20 +208,24 @@
    "size": 200,
    "faceCx": 100,
    "chin": 112,
-   "mouth": 112,
+   "mouth": 109.6,
    "faceW": 109,
    "skin": [
     240,
     188,
     144
    ],
-   "hair": null
+   "hair": null,
+   "eyeL": 82.1,
+   "eyeR": 114.7,
+   "eyeY": 85.9,
+   "eyeCx": 98.4
   },
   "short": {
    "size": 200,
    "faceCx": 100,
    "chin": 104,
-   "mouth": 106,
+   "mouth": 102.8,
    "faceW": 101,
    "skin": [
     239,
@@ -192,13 +236,17 @@
     57,
     47,
     42
-   ]
+   ],
+   "eyeL": 82.8,
+   "eyeR": 115.2,
+   "eyeY": 79.8,
+   "eyeCx": 99
   },
   "sidepart": {
    "size": 200,
    "faceCx": 100,
    "chin": 100,
-   "mouth": 103,
+   "mouth": 98.6,
    "faceW": 101,
    "skin": [
     235,
@@ -209,13 +257,17 @@
     58,
     47,
     42
-   ]
+   ],
+   "eyeL": 83.8,
+   "eyeR": 116.1,
+   "eyeY": 75.8,
+   "eyeCx": 100
   },
   "curly": {
    "size": 200,
    "faceCx": 100,
    "chin": 110,
-   "mouth": 112,
+   "mouth": 110.2,
    "faceW": 115,
    "skin": [
     235,
@@ -226,13 +278,17 @@
     56,
     44,
     38
-   ]
+   ],
+   "eyeL": 85,
+   "eyeR": 117.4,
+   "eyeY": 86.7,
+   "eyeCx": 101.2
   },
   "bun": {
    "size": 200,
    "faceCx": 100,
    "chin": 120,
-   "mouth": 119,
+   "mouth": 119.9,
    "faceW": 101,
    "skin": [
     240,
@@ -243,13 +299,17 @@
     61,
     50,
     43
-   ]
+   ],
+   "eyeL": 82.9,
+   "eyeR": 115.5,
+   "eyeY": 96.1,
+   "eyeCx": 99.2
   },
   "braid": {
    "size": 200,
    "faceCx": 100,
    "chin": 102,
-   "mouth": 104,
+   "mouth": 100.6,
    "faceW": 101,
    "skin": [
     240,
@@ -260,13 +320,17 @@
     56,
     47,
     42
-   ]
+   ],
+   "eyeL": 83.8,
+   "eyeR": 116.2,
+   "eyeY": 77.6,
+   "eyeCx": 100
   },
   "bob": {
    "size": 200,
    "faceCx": 100,
    "chin": 102,
-   "mouth": 103,
+   "mouth": 101.2,
    "faceW": 123,
    "skin": [
     230,
@@ -277,13 +341,17 @@
     60,
     47,
     40
-   ]
+   ],
+   "eyeL": 83.3,
+   "eyeR": 115.8,
+   "eyeY": 78.1,
+   "eyeCx": 99.5
   },
   "long": {
    "size": 200,
    "faceCx": 100,
    "chin": 101,
-   "mouth": 104,
+   "mouth": 101.1,
    "faceW": 117,
    "skin": [
     231,
@@ -294,13 +362,17 @@
     59,
     45,
     39
-   ]
+   ],
+   "eyeL": 81.1,
+   "eyeR": 114.1,
+   "eyeY": 78,
+   "eyeCx": 97.6
   },
   "buzz": {
    "size": 200,
    "faceCx": 100,
    "chin": 93,
-   "mouth": 94,
+   "mouth": 91.8,
    "faceW": 101,
    "skin": [
     241,
@@ -311,13 +383,17 @@
     56,
     50,
     46
-   ]
+   ],
+   "eyeL": 83.2,
+   "eyeR": 116.2,
+   "eyeY": 68.4,
+   "eyeCx": 99.7
   },
   "fade": {
    "size": 200,
    "faceCx": 100,
    "chin": 106,
-   "mouth": 107,
+   "mouth": 104.9,
    "faceW": 101,
    "skin": [
     239,
@@ -328,7 +404,11 @@
     59,
     49,
     43
-   ]
+   ],
+   "eyeL": 82.8,
+   "eyeR": 115.4,
+   "eyeY": 82.2,
+   "eyeCx": 99.1
   }
  }
 }

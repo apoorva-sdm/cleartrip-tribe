@@ -12,6 +12,13 @@ const FOCUS: Record<string, string> = {
   krabi: "center 45%",
 };
 
+/** Fetch every place photo in the background once the app is idle, so cards show them instantly. */
+if (typeof window !== "undefined") {
+  const warm = () => Object.values(PHOTOS).forEach((src) => { const img = new Image(); img.decoding = "async"; img.src = src; });
+  if ("requestIdleCallback" in window) window.requestIdleCallback(warm, { timeout: 2500 });
+  else setTimeout(warm, 1200);
+}
+
 export function placePhoto(placeId: string): string | undefined {
   return PHOTOS[`../assets/places/${placeId}.jpg`];
 }
@@ -25,5 +32,11 @@ interface PlacePhotoProps {
 export function PlacePhoto({ placeId, name, className }: PlacePhotoProps) {
   const src = placePhoto(placeId);
   if (!src) return null;
-  return <img className={className} src={src} alt={name} loading="lazy" style={{ objectPosition: FOCUS[placeId] ?? "center" }} />;
+  return <img
+      className={className}
+      src={src}
+      alt={name}
+      decoding="async"
+      style={{ objectPosition: FOCUS[placeId] ?? "center", background: "var(--skeleton)" }}
+    />;
 }

@@ -22,12 +22,42 @@
     padding: var(--space-6) 0;
   }
 
+  /* A phone body around the screen: dark bezel, rounded corners and side buttons. */
+  .device {
+    position: relative;
+    /* Space between the screen and the bezel, wider at the sides. */
+    padding: 14px 18px;
+    border-radius: 40px;
+    background: linear-gradient(145deg, #2b2b30, #0f0f12);
+    box-shadow: 0 0 0 2px #3a3a40, var(--sh-float), 0 30px 60px rgba(0, 0, 0, 0.18);
+  }
+
+  .device::before,
+  .device::after {
+    content: "";
+    position: absolute;
+    width: 4px;
+    border-radius: 2px;
+    background: #2b2b30;
+  }
+
+  /* Volume buttons on the left, power button on the right. */
+  .device::before {
+    left: -5px;
+    top: 150px;
+    height: 120px;
+  }
+
+  .device::after {
+    right: -5px;
+    top: 210px;
+    height: 90px;
+  }
+
   .phone {
     width: var(--phone-w);
     height: 844px;
-    border: 1px solid var(--line);
     border-radius: 24px;
-    box-shadow: var(--sh-float);
     overflow: hidden;
   }
 }

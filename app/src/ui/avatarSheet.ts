@@ -18,6 +18,11 @@ export interface SheetAvatar {
   faceCx: number;
   chin: number;
   mouth: number;
+  /** Pupil centres (x) and their shared row (y), and the point between them. */
+  eyeL: number;
+  eyeR: number;
+  eyeY: number;
+  eyeCx: number;
   faceW: number;
   skin: [number, number, number];
   hair: [number, number, number] | null;

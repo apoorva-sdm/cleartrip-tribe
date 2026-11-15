@@ -10,7 +10,9 @@ interface PhoneFrameProps {
 export function PhoneFrame({ children, className }: PhoneFrameProps) {
   return (
     <div className={styles.page}>
-      <div className={[styles.phone, className].filter(Boolean).join(" ")}>{children}</div>
+      <div className={styles.device}>
+        <div className={[styles.phone, className].filter(Boolean).join(" ")}>{children}</div>
+      </div>
     </div>
   );
 }

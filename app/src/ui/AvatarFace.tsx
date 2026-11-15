@@ -291,10 +291,10 @@ export function AvatarFace({ look, seed, items = [], size = 40, faded = false, v
       {extra("nosepin") && <circle cx="52.9" cy="49.7" r="0.95" fill={url("gold")} />}
       {extra("jhumkas") && !hijab && (
         <g fill={url("gold")}>
-          <circle cx="29.5" cy="52" r="1.3" />
-          <path d="M26.5 54 Q29.5 51.8 32.5 54 L29.5 58.5 Z" />
-          <circle cx="70.5" cy="52" r="1.3" />
-          <path d="M67.5 54 Q70.5 51.8 73.5 54 L70.5 58.5 Z" />
+          <circle cx="31" cy="49.6" r="0.9" />
+          <path d="M29 51.2 Q31 49.8 33 51.2 L31 54.4 Z" />
+          <circle cx="69" cy="49.6" r="0.9" />
+          <path d="M67 51.2 Q69 49.8 71 51.2 L69 54.4 Z" />
         </g>
       )}
       {extra("glasses") && (
@@ -543,11 +543,14 @@ export function AvatarFace({ look, seed, items = [], size = 40, faded = false, v
   const ix = 50 - sheet.faceCx * S;
   const iy = 2;
   const mouthY = iy + sheet.mouth * S;
-  const k = Math.max(0.8, (sheet.faceW * S - 8) / 41);
-  /** Maps drawn-head coordinates (mouth at 50,57.6) onto the sheet face, so hats and extras sit right. */
-  const onFace = `translate(50 ${mouthY.toFixed(2)}) scale(${k.toFixed(3)}) translate(-50 -57.6)`;
+  // Glasses, bindi, nose pin, earrings and hats are anchored to the eyes measured on each sheet picture:
+  // the drawn head has its pupils at (42.4, 45.5) and (57.6, 45.5), 15.2 units apart.
+  const eyeX = ix + sheet.eyeCx * S;
+  const eyeY = iy + sheet.eyeY * S;
+  const ke = ((sheet.eyeR - sheet.eyeL) * S) / 15.2;
+  const onFace = `translate(${eyeX.toFixed(2)} ${eyeY.toFixed(2)}) scale(${ke.toFixed(3)}) translate(-50 -45.5)`;
   /** Facial hair drawn around the sheet's own mouth (origin = mouth centre). */
-  const atMouth = `translate(50 ${mouthY.toFixed(2)}) scale(${(k * 0.98).toFixed(3)})`;
+  const atMouth = `translate(${eyeX.toFixed(2)} ${mouthY.toFixed(2)}) scale(${(ke * 0.86).toFixed(3)})`;
   const moustache = <path d="M-7 -2.4 C-5 -5.2 -1.6 -5 0 -3.8 C1.6 -5 5 -5.2 7 -2.4 C4.6 -3.1 2.4 -2.5 0 -2.9 C-2.4 -2.5 -4.6 -3.1 -7 -2.4 Z" fill={url("hair")} />;
   const sheetFacialHair =
     facialHair === "none" ? null : (

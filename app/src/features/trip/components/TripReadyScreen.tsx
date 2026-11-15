@@ -45,7 +45,7 @@ export function TripReadyScreen() {
           if (choice) dispatch(setBookedVia(choice));
           navigate("/tribe/trip");
         }}>
-          Let's go! 🚀
+          Let's go!
         </Button>
       }
     >
